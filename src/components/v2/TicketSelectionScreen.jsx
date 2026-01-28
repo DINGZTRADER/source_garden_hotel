@@ -55,12 +55,12 @@ const TicketSelectionScreen = ({ db, appId, department, staffName, onSelectTicke
             <div className="flex-1 p-6 overflow-y-auto">
                 <div className="max-w-7xl mx-auto">
                     {/* New Ticket Section */}
-                    <div className="mb-8">
-                        <form onSubmit={handleCreateTicket} className="flex gap-4 max-w-2xl">
+                    <div className="mb-8 flex flex-col md:flex-row gap-4 items-start md:items-center">
+                        <form onSubmit={handleCreateTicket} className="flex gap-4 w-full md:w-auto">
                             <input
                                 type="text"
-                                placeholder="New Ticket Name (e.g. Table 5, James)"
-                                className="flex-1 p-4 rounded-xl border border-slate-300 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none text-lg"
+                                placeholder="New Ticket Name (e.g. Table 5)"
+                                className="flex-1 p-4 rounded-xl border border-slate-300 shadow-sm focus:ring-2 focus:ring-blue-500 outline-none text-lg min-w-[300px]"
                                 value={newTicketName}
                                 onChange={(e) => setNewTicketName(e.target.value)}
                                 autoFocus
@@ -68,12 +68,37 @@ const TicketSelectionScreen = ({ db, appId, department, staffName, onSelectTicke
                             <button
                                 type="submit"
                                 disabled={isCreating || !newTicketName}
-                                className="bg-blue-600 text-white px-8 rounded-xl font-bold hover:bg-blue-700 disabled:opacity-50 flex items-center gap-2 shadow-md transition-all active:scale-95"
+                                className="bg-blue-600 text-white px-8 rounded-xl font-bold hover:bg-blue-700 disabled:opacity-50 flex items-center gap-2 shadow-md transition-all active:scale-95 whitespace-nowrap"
                             >
                                 <Plus size={24} />
-                                {isCreating ? 'Creating...' : 'New Ticket'}
+                                New Ticket
                             </button>
                         </form>
+
+                        <div className="hidden md:block h-12 w-px bg-slate-300 mx-2"></div>
+
+                        <button
+                            onClick={() => {
+                                const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                                setNewTicketName(`Walk-in ${time}`);
+                                // We can either set the name and let them click "New", or auto-submit.
+                                // Auto-submitting is faster (Quiosque Mode feel).
+                                setIsCreating(true);
+                                createOpenBarFolio(db, appId, {
+                                    serviceCenter: department.id,
+                                    staffId: 'staff_id_ph',
+                                    staffName: staffName,
+                                    tableOrLabel: `Walk-in ${time}`
+                                }).then(newFolio => {
+                                    if (newFolio) onSelectTicket(newFolio);
+                                }).finally(() => setIsCreating(false));
+                            }}
+                            disabled={isCreating}
+                            className="bg-emerald-600 text-white px-6 py-4 rounded-xl font-bold hover:bg-emerald-700 flex items-center gap-2 shadow-md transition-all active:scale-95"
+                        >
+                            <Clock size={24} />
+                            Quick Walk-in
+                        </button>
                     </div>
 
                     {/* Open Tickets Grid */}
