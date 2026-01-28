@@ -1,0 +1,412 @@
+{
+  "categories": [
+    {
+      "category_name": "Salads",
+      "items": [
+        { "item_name": "Chefs Caesar Salad", "price": 25000, "currency": "UGX" },
+        { "item_name": "Ovacado Sunrise", "price": 25000, "currency": "UGX" },
+        { "item_name": "Chicken Salads", "price": 25000, "currency": "UGX" },
+        { "item_name": "Sweet Chicken Coleslow", "price": 25000, "currency": "UGX" },
+        { "item_name": "American Eggs Salad", "price": 20000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Soups",
+      "items": [
+        { "item_name": "Clear Vegetable Soup", "price": 10000, "currency": "UGX" },
+        { "item_name": "Carrots Soup", "price": 10000, "currency": "UGX" },
+        { "item_name": "Tomato Soup", "price": 10000, "currency": "UGX" },
+        { "item_name": "Carrot & Ginger Soup", "price": 15000, "currency": "UGX" },
+        { "item_name": "Mushroom Soup", "price": 20000, "currency": "UGX" },
+        { "item_name": "Spaghetti & Chicken Soup", "price": 20000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Breakfast",
+      "items": [
+        { "item_name": "Source Garden English Breakfast", "price": 30000, "currency": "UGX" },
+        { "item_name": "Petite Breakfast", "price": 25000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Egg Dishes",
+      "items": [
+        { "item_name": "Boiled Eggs", "price": 5000, "currency": "UGX" },
+        { "item_name": "Poached Eggs", "price": 5000, "currency": "UGX" },
+        { "item_name": "Fried Eggs", "price": 8000, "currency": "UGX" },
+        { "item_name": "Cheese Omelette", "price": 8000, "currency": "UGX" },
+        { "item_name": "Spanish Omelette", "price": 5000, "currency": "UGX" },
+        { "item_name": "Tomato Omelette", "price": 5000, "currency": "UGX" },
+        { "item_name": "Plain Omelette", "price": 5000, "currency": "UGX" },
+        { "item_name": "Mushroom Omelette", "price": 5000, "currency": "UGX" },
+        { "item_name": "Scramble Omelette", "price": 5000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Snacks",
+      "items": [
+        { "item_name": "Chicken Wings", "price": 30000, "currency": "UGX" },
+        { "item_name": "Chicken Nuggets", "price": 20000, "currency": "UGX" },
+        { "item_name": "Chicken Pakoda", "price": 20000, "currency": "UGX" },
+        { "item_name": "Onion Rings", "price": 10000, "currency": "UGX" },
+        { "item_name": "Mozarella Bites", "price": 20000, "currency": "UGX" },
+        { "item_name": "Plain Chips", "price": 10000, "currency": "UGX" },
+        { "item_name": "Matooke Crispy", "price": 10000, "currency": "UGX" },
+        { "item_name": "Chips in Masala Sauce", "price": 15000, "currency": "UGX" },
+        { "item_name": "French Fried Chips", "price": 15000, "currency": "UGX" },
+        { "item_name": "Chapatti", "price": 3000, "currency": "UGX" },
+        { "item_name": "Beef Samosa (Pair)", "price": 5000, "currency": "UGX" },
+        { "item_name": "Vegetable Samosa (Pair)", "price": 5000, "currency": "UGX" },
+        { "item_name": "Plain Sausages (Pair)", "price": 6000, "currency": "UGX" },
+        { "item_name": "English Pan Cakes", "price": 10000, "currency": "UGX" },
+        { "item_name": "Toasted Bread", "price": 5000, "currency": "UGX" },
+        { "item_name": "Vegetable Spring Rolls (Pair)", "price": 5000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Main Course",
+      "items": [
+        { "item_name": "Nile Special Fish", "price": 40000, "currency": "UGX" },
+        { "item_name": "Premium Whole Fish", "price": 35000, "currency": "UGX" },
+        { "item_name": "Special Grilled Whole Tilapia", "price": 35000, "currency": "UGX" },
+        { "item_name": "Fresh Fish Stew", "price": 35000, "currency": "UGX" },
+        { "item_name": "Fish Fingers", "price": 25000, "currency": "UGX" },
+        { "item_name": "Deep Fried Fish Stew", "price": 35000, "currency": "UGX" },
+        { "item_name": "Fish English Fillet", "price": 25000, "currency": "UGX" },
+        { "item_name": "Low Fat Whole Fish", "price": 35000, "currency": "UGX" },
+        { "item_name": "Liver Princess", "price": 25000, "currency": "UGX" },
+        { "item_name": "Supreme of Chicken", "price": 30000, "currency": "UGX" },
+        { "item_name": "A Quarter Chicken", "price": 25000, "currency": "UGX" },
+        { "item_name": "Pan-Fried Beef", "price": 25000, "currency": "UGX" },
+        { "item_name": "Pan-Fried Goat", "price": 30000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Burgers and Sandwiches",
+      "items": [
+        { "item_name": "Chicken Burger", "price": 20000, "currency": "UGX" },
+        { "item_name": "Beef Burger", "price": 20000, "currency": "UGX" },
+        { "item_name": "Vegetable Burger", "price": 20000, "currency": "UGX" },
+        { "item_name": "Chicken Sandwich", "price": 20000, "currency": "UGX" },
+        { "item_name": "Beef Sandwich", "price": 20000, "currency": "UGX" },
+        { "item_name": "Egg Sandwich", "price": 20000, "currency": "UGX" },
+        { "item_name": "Sausage Sandwich", "price": 20000, "currency": "UGX" },
+        { "item_name": "Vegetable Sandwich", "price": 15000, "currency": "UGX" },
+        { "item_name": "Cheese Sandwich", "price": 15000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Steaks and Grills",
+      "items": [
+        { "item_name": "Beef Strogonoff", "price": 25000, "currency": "UGX" },
+        { "item_name": "Beef Fillet", "price": 25000, "currency": "UGX" },
+        { "item_name": "Source Garden Mixed Grill", "price": 50000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Pizzas",
+      "items": [
+        { "item_name": "Meat Magnifico (Small)", "price": 25000, "currency": "UGX" },
+        { "item_name": "Meat Magnifico (Big)", "price": 35000, "currency": "UGX" },
+        { "item_name": "Margherita (Small)", "price": 25000, "currency": "UGX" },
+        { "item_name": "Margherita (Big)", "price": 35000, "currency": "UGX" },
+        { "item_name": "Hawaii (Small)", "price": 25000, "currency": "UGX" },
+        { "item_name": "Hawaii (Big)", "price": 35000, "currency": "UGX" },
+        { "item_name": "Farmer Pizza (Small)", "price": 25000, "currency": "UGX" },
+        { "item_name": "Farmer Pizza (Big)", "price": 35000, "currency": "UGX" },
+        { "item_name": "Vegetable Deluxe (Small)", "price": 25000, "currency": "UGX" },
+        { "item_name": "Vegetable Deluxe (Big)", "price": 35000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Pastas",
+      "items": [
+        { "item_name": "Spaghetti Bolognaise", "price": 25000, "currency": "UGX" },
+        { "item_name": "Spaghetti Napolitan", "price": 20000, "currency": "UGX" },
+        { "item_name": "Spaghetti Fungi", "price": 20000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Curries",
+      "items": [
+        { "item_name": "Chicken Curry", "price": 25000, "currency": "UGX" },
+        { "item_name": "Chicken Biryani", "price": 30000, "currency": "UGX" },
+        { "item_name": "Mixed Vegetable Curry", "price": 20000, "currency": "UGX" },
+        { "item_name": "Vegetable Biryani", "price": 20000, "currency": "UGX" },
+        { "item_name": "Chicken Tikka Masala", "price": 25000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "African Dishes",
+      "items": [
+        { "item_name": "Goat Katogo", "price": 20000, "currency": "UGX" },
+        { "item_name": "Beef Katogo", "price": 20000, "currency": "UGX" },
+        { "item_name": "Beef Stew", "price": 25000, "currency": "UGX" },
+        { "item_name": "African Stews", "price": 25000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Extras",
+      "items": [
+        { "item_name": "Plain Rice", "price": 10000, "currency": "UGX" },
+        { "item_name": "Mashed Potatoes", "price": 10000, "currency": "UGX" },
+        { "item_name": "Ugali or Posho", "price": 10000, "currency": "UGX" },
+        { "item_name": "Boiled Potatoes", "price": 10000, "currency": "UGX" },
+        { "item_name": "Irish Jackets", "price": 10000, "currency": "UGX" },
+        { "item_name": "Matooke Jackets", "price": 10000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Buffet Section",
+      "items": [
+        { "item_name": "African Buffet", "price": 40000, "currency": "UGX" },
+        { "item_name": "Special African Choma", "price": 55000, "currency": "UGX" },
+        { "item_name": "Indian Buffet", "price": 45000, "currency": "UGX" },
+        { "item_name": "Continental", "price": 50000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Desserts",
+      "items": [
+        { "item_name": "Fruit Platter", "price": 15000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Fresh Juices",
+      "items": [
+        { "item_name": "Passion Fruit", "price": 10000, "currency": "UGX" },
+        { "item_name": "Watermelon", "price": 10000, "currency": "UGX" },
+        { "item_name": "Pineapple", "price": 10000, "currency": "UGX" },
+        { "item_name": "Cocktail Juice", "price": 15000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Coffees",
+      "items": [
+        { "item_name": "African Coffee", "price": 10000, "currency": "UGX" },
+        { "item_name": "Black Coffee", "price": 10000, "currency": "UGX" },
+        { "item_name": "Americano", "price": 10000, "currency": "UGX" },
+        { "item_name": "Cappuccino", "price": 10000, "currency": "UGX" },
+        { "item_name": "Espresso", "price": 10000, "currency": "UGX" },
+        { "item_name": "English Coffee", "price": 15000, "currency": "UGX" },
+        { "item_name": "Mocha", "price": 10000, "currency": "UGX" },
+        { "item_name": "Latte", "price": 10000, "currency": "UGX" },
+        { "item_name": "Macchiato", "price": 10000, "currency": "UGX" },
+        { "item_name": "Iced Coffee", "price": 10000, "currency": "UGX" },
+        { "item_name": "Espresso Martini", "price": 18000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Teas",
+      "items": [
+        { "item_name": "Green Tea", "price": 10000, "currency": "UGX" },
+        { "item_name": "Hot Chocolate", "price": 10000, "currency": "UGX" },
+        { "item_name": "Cold Chocolate", "price": 10000, "currency": "UGX" },
+        { "item_name": "African Tea", "price": 8000, "currency": "UGX" },
+        { "item_name": "Black Tea Spice", "price": 8000, "currency": "UGX" },
+        { "item_name": "Hot Milk", "price": 8000, "currency": "UGX" },
+        { "item_name": "Cold Milk", "price": 8000, "currency": "UGX" },
+        { "item_name": "Hot Water", "price": 5000, "currency": "UGX" },
+        { "item_name": "English Tea", "price": 15000, "currency": "UGX" },
+        { "item_name": "Dawa Tea", "price": 15000, "currency": "UGX" },
+        { "item_name": "African Tea Spiced", "price": 10000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Non-Alcoholic",
+      "items": [
+        { "item_name": "Virgin Mojito", "price": 12000, "currency": "UGX" },
+        { "item_name": "Blue Mocktail", "price": 12000, "currency": "UGX" },
+        { "item_name": "Virgin Mary", "price": 15000, "currency": "UGX" },
+        { "item_name": "Virgin Pinacolada", "price": 15000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Soft Drinks",
+      "items": [
+        { "item_name": "Water (500ml)", "price": 3000, "currency": "UGX" },
+        { "item_name": "Soda (300ml)", "price": 3000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Beers",
+      "items": [
+        { "item_name": "Local Beers", "price": 6000, "currency": "UGX" },
+        { "item_name": "Smirnoff", "price": 7000, "currency": "UGX" },
+        { "item_name": "Tusker Cider", "price": 7000, "currency": "UGX" },
+        { "item_name": "Heineken (Bottle)", "price": 10000, "currency": "UGX" },
+        { "item_name": "Heineken (Can)", "price": 15000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Sparkling Wine",
+      "items": [
+        { "item_name": "JP Chenet (750ml)", "price": 100000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "White Wines",
+      "items": [
+        { "item_name": "Nederburg (750ml)", "price": 100000, "currency": "UGX" },
+        { "item_name": "Four Cousins (750ml)", "price": 75000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Red Wines",
+      "items": [
+        { "item_name": "Four Cousins (5L)", "price": 300000, "currency": "UGX" },
+        { "item_name": "Four Cousins (1.5L)", "price": 120000, "currency": "UGX" },
+        { "item_name": "Four Cousins (750ml)", "price": 75000, "currency": "UGX" },
+        { "item_name": "Frontera / Castaneda (750ml)", "price": 60000, "currency": "UGX" },
+        { "item_name": "Consigna / Theresa / V&A Sherry (750ml)", "price": 50000, "currency": "UGX" },
+        { "item_name": "Lavida / Liglo / Valony Blanc (750ml)", "price": 40000, "currency": "UGX" },
+        { "item_name": "Luambo (750ml)", "price": 45000, "currency": "UGX" },
+        { "item_name": "Nederburg (750ml)", "price": 100000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Shooters",
+      "items": [
+        { "item_name": "Kamikaze", "price": 8000, "currency": "UGX" },
+        { "item_name": "Jager Bomb", "price": 15000, "currency": "UGX" },
+        { "item_name": "B52", "price": 8000, "currency": "UGX" },
+        { "item_name": "3 Wisemen", "price": 15000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Tequila Olmeca",
+      "items": [
+        { "item_name": "Chocolate (1L)", "price": 200000, "currency": "UGX" },
+        { "item_name": "Gold (1L)", "price": 200000, "currency": "UGX" },
+        { "item_name": "Silver (1L)", "price": 200000, "currency": "UGX" },
+        { "item_name": "Tequila Shot", "price": 8000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Vodkas",
+      "items": [
+        { "item_name": "Smirnoff (750ml)", "price": 50000, "currency": "UGX" },
+        { "item_name": "Smirnoff (350ml)", "price": 30000, "currency": "UGX" },
+        { "item_name": "Smirnoff (250ml)", "price": 20000, "currency": "UGX" },
+        { "item_name": "Vodka Shot", "price": 5000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Vermouths",
+      "items": [
+        { "item_name": "Martini Bianco (1L)", "price": 150000, "currency": "UGX" },
+        { "item_name": "Vermouth Shot", "price": 7000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Gins",
+      "items": [
+        { "item_name": "Beefeater (1L)", "price": 180000, "currency": "UGX" },
+        { "item_name": "Beefeater (750ml)", "price": 100000, "currency": "UGX" },
+        { "item_name": "Gordons Pink (Bottle)", "price": 150000, "currency": "UGX" },
+        { "item_name": "Gordons Pink (Shot)", "price": 6000, "currency": "UGX" },
+        { "item_name": "Gilbey's (750ml)", "price": 50000, "currency": "UGX" },
+        { "item_name": "Gilbey's (350ml)", "price": 25000, "currency": "UGX" },
+        { "item_name": "Gilbey's (200ml)", "price": 20000, "currency": "UGX" },
+        { "item_name": "Gilbey's Shot", "price": 5000, "currency": "UGX" },
+        { "item_name": "D'Argent (Rosey & Blue) Shot", "price": 8000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Uganda Waragi",
+      "items": [
+        { "item_name": "Premium (750ml)", "price": 50000, "currency": "UGX" },
+        { "item_name": "Premium (350ml)", "price": 30000, "currency": "UGX" },
+        { "item_name": "Premium (200ml)", "price": 20000, "currency": "UGX" },
+        { "item_name": "Coconut (750ml)", "price": 50000, "currency": "UGX" },
+        { "item_name": "Coconut (350ml)", "price": 30000, "currency": "UGX" },
+        { "item_name": "Coconut (200ml)", "price": 20000, "currency": "UGX" },
+        { "item_name": "Pineapple (750ml)", "price": 50000, "currency": "UGX" },
+        { "item_name": "Pineapple (350ml)", "price": 30000, "currency": "UGX" },
+        { "item_name": "Pineapple (200ml)", "price": 20000, "currency": "UGX" },
+        { "item_name": "Lemon and Ginger (750ml)", "price": 50000, "currency": "UGX" },
+        { "item_name": "Lemon and Ginger (350ml)", "price": 30000, "currency": "UGX" },
+        { "item_name": "Lemon and Ginger (200ml)", "price": 20000, "currency": "UGX" },
+        { "item_name": "Waragi Shot", "price": 5000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Rums",
+      "items": [
+        { "item_name": "Capt. Morgan (750ml)", "price": 60000, "currency": "UGX" },
+        { "item_name": "Bacardi (1L)", "price": 120000, "currency": "UGX" },
+        { "item_name": "Rum Shot", "price": 8000, "currency": "UGX" },
+        { "item_name": "Bumbu (750ml)", "price": 180000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Liqueurs",
+      "items": [
+        { "item_name": "Jagermeister (1L)", "price": 180000, "currency": "UGX" },
+        { "item_name": "Bailey's (1L)", "price": 150000, "currency": "UGX" },
+        { "item_name": "Bailey's (750ml)", "price": 100000, "currency": "UGX" },
+        { "item_name": "Bailey's (375ml)", "price": 70000, "currency": "UGX" },
+        { "item_name": "Liqueur Shot", "price": 8000, "currency": "UGX" },
+        { "item_name": "Zappa Green Shot", "price": 5000, "currency": "UGX" },
+        { "item_name": "Zappa Blue Shot", "price": 5000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Whiskeys",
+      "items": [
+        { "item_name": "Double Black (1L)", "price": 300000, "currency": "UGX" },
+        { "item_name": "Double Black Shot", "price": 10000, "currency": "UGX" },
+        { "item_name": "Jack Daniels (1L)", "price": 180000, "currency": "UGX" },
+        { "item_name": "Jack Daniels (750ml)", "price": 150000, "currency": "UGX" },
+        { "item_name": "Jack Daniels Honey (1L)", "price": 180000, "currency": "UGX" },
+        { "item_name": "Jack Daniels Honey (750ml)", "price": 150000, "currency": "UGX" },
+        { "item_name": "J&B (1L)", "price": 150000, "currency": "UGX" },
+        { "item_name": "J&B (750ml)", "price": 90000, "currency": "UGX" },
+        { "item_name": "Black Label (1L)", "price": 250000, "currency": "UGX" },
+        { "item_name": "Black Label (750ml)", "price": 180000, "currency": "UGX" },
+        { "item_name": "Black Label (375ml)", "price": 100000, "currency": "UGX" },
+        { "item_name": "Jameson (1L)", "price": 180000, "currency": "UGX" },
+        { "item_name": "Jameson (750ml)", "price": 150000, "currency": "UGX" },
+        { "item_name": "Jameson (375ml)", "price": 60000, "currency": "UGX" },
+        { "item_name": "Whiskey Shot", "price": 8000, "currency": "UGX" },
+        { "item_name": "Grants (1L)", "price": 100000, "currency": "UGX" },
+        { "item_name": "Grants (750ml)", "price": 80000, "currency": "UGX" },
+        { "item_name": "Grants (375ml)", "price": 50000, "currency": "UGX" },
+        { "item_name": "Grants Shot", "price": 6000, "currency": "UGX" },
+        { "item_name": "V.A.T 69 (1L)", "price": 60000, "currency": "UGX" },
+        { "item_name": "V.A.T 69 (375ml)", "price": 30000, "currency": "UGX" },
+        { "item_name": "Mc Dowell's (750ml)", "price": 45000, "currency": "UGX" },
+        { "item_name": "Gold Medal (750ml)", "price": 100000, "currency": "UGX" },
+        { "item_name": "Glen Russel (750ml)", "price": 60000, "currency": "UGX" },
+        { "item_name": "Red Label (1L)", "price": 150000, "currency": "UGX" },
+        { "item_name": "Red Label (750ml)", "price": 100000, "currency": "UGX" },
+        { "item_name": "Red Label (375ml)", "price": 80000, "currency": "UGX" },
+        { "item_name": "Teachers (1L)", "price": 85000, "currency": "UGX" },
+        { "item_name": "Teachers (750ml)", "price": 60000, "currency": "UGX" },
+        { "item_name": "Famous G. (1L)", "price": 120000, "currency": "UGX" },
+        { "item_name": "Famous G. (750ml)", "price": 90000, "currency": "UGX" },
+        { "item_name": "Black & White (750ml)", "price": 80000, "currency": "UGX" },
+        { "item_name": "Black & White (375ml)", "price": 40000, "currency": "UGX" },
+        { "item_name": "Bond 7 (750ml)", "price": 50000, "currency": "UGX" },
+        { "item_name": "Bond 7 (350ml)", "price": 30000, "currency": "UGX" },
+        { "item_name": "Bond 7 (200ml)", "price": 20000, "currency": "UGX" },
+        { "item_name": "Bond 7 Shot", "price": 5000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Brandys",
+      "items": [
+        { "item_name": "Vice Roy (750ml)", "price": 70000, "currency": "UGX" },
+        { "item_name": "Bee Hive (1L)", "price": 120000, "currency": "UGX" },
+        { "item_name": "Bee Hive (750ml)", "price": 60000, "currency": "UGX" }
+      ]
+    },
+    {
+      "category_name": "Meat Platter",
+      "items": [
+        { "item_name": "Platter for 2", "price": 70000, "currency": "UGX" },
+        { "item_name": "Platter for 4", "price": 140000, "currency": "UGX" }
+      ]
+    }
+  ]
+}

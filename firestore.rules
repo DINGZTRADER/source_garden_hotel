@@ -1,0 +1,114 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---------- HELPERS ----------
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function role() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+
+    function isAdmin() {
+      return signedIn() && role() == 'admin';
+    }
+
+    function isManager() {
+      return signedIn() && role() == 'manager';
+    }
+
+    function isReceptionist() {
+      return signedIn() && role() == 'receptionist';
+    }
+
+    function isSystem() {
+      return signedIn() && role() == 'system';
+    }
+
+    // ---------- USERS ----------
+    match /users/{userId} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    // ---------- FOLIOS ----------
+    match /folios/{folioId} {
+      allow create: if signedIn();
+      allow read: if signedIn();
+      allow update: if signedIn() && resource.data.status == 'OPEN';
+      allow delete: if false;
+    }
+
+    match /folio_line_items/{itemId} {
+      allow create: if signedIn();
+      allow read: if signedIn();
+      allow update, delete: if false;
+    }
+
+    // ---------- INVOICES ----------
+    match /invoices/{invoiceId} {
+      allow create: if signedIn();
+      allow read: if signedIn();
+      allow update, delete: if false;
+    }
+
+    // ---------- INVOICE COUNTERS ----------
+    match /invoice_counters/{year} {
+      allow read, create, update: if isAdmin();
+      allow delete: if false;
+    }
+
+    // ---------- DISCOUNTS ----------
+    match /discount_rules/{ruleId} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    match /discount_events/{eventId} {
+      allow create: if isAdmin() || isManager();
+      allow read: if signedIn();
+      allow update, delete: if false;
+    }
+
+    // ---------- AUDIT LOG ----------
+    match /audit_logs/{logId} {
+      allow create: if signedIn();
+      allow read: if isAdmin();
+      allow update, delete: if false;
+    }
+
+    // ---------- GUEST PROFILES ----------
+    match /guest_profiles/{guestId} {
+      allow read, create, update: if isAdmin() || isManager();
+      allow delete: if false;
+    }
+
+    // ---------- STOCK MOVEMENTS ----------
+    match /stock_movements/{movementId} {
+      allow create: if signedIn();
+      allow read: if isAdmin() || isManager();
+      allow update, delete: if false;
+    }
+
+    // ---------- WORK PERIODS ----------
+    match /work_periods/{periodId} {
+      allow create: if signedIn();
+      allow read: if isAdmin();
+      allow update: if isAdmin() && resource.data.closed == false;
+      allow delete: if false;
+    }
+
+    // ---------- V1 LEGACY DATA ----------
+    match /artifacts/{appId}/public/data/{document=**} {
+      allow read, write: if signedIn();
+    }
+
+    // ---------- DEFAULT DENY ----------
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

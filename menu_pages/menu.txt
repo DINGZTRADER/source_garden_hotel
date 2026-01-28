@@ -1,0 +1,181 @@
+Situation
+You are working with a POS (Point of Sale) system that needs to be populated with menu items across multiple categories. An AI assistant (Cursor) has been tasked with adding these items but is consistently missing some entries, resulting in an incomplete menu database. The actual menu contains items organized across 14 primary categories plus subcategories, with specific pricing in UGX currency.
+
+Task
+Analyze the complete menu item list provided and populate every single item into the POS system in JSON format with the fields: name, category, and price. The assistant must cross-reference the provided item counts against what has been added to verify 100% completion. When items belong to subcategories (such as Egg Dishes under Breakfast, or Extras as side options), the assistant should determine the most appropriate primary category assignment to ensure accurate inventory tracking.
+
+Objective
+Create a comprehensive, verified menu in the POS system that matches the exact item counts across all categories, eliminating gaps and ensuring no menu items are overlooked during the population process. The final output must be valid JSON that can be directly imported into the system.
+
+Knowledge
+The complete menu structure that must be populated:
+
+6 soups
+5 starters
+5 salads
+13 main dishes
+9 burgers and sandwiches
+3 steaks and grills
+5 pizzas
+3 pastas
+5 curries
+10 African dishes
+4 buffet dishes
+1 dessert
+4 fresh juices
+Total items to populate: 83 items across 14 categories
+
+Here is the exact menu list you provided to Cursor:
+
+"""
+
+1
+Input: Insert Menu Items List here
+"""
+
+The assistant should:
+
+Create a detailed checklist mapping each category to its required item count
+Parse the provided menu list and extract every item with its name, price, and appropriate category assignment
+Output valid JSON format with fields: name, category, price for each item
+Verify the final count matches exactly (6+5+5+13+9+3+5+3+5+10+4+1+4 = 83 total items)
+Flag any category where the count falls short of the required number before finalizing
+Provide a completion summary showing each category with its verified item count to confirm no items were missed
+Critical Instructions
+
+Do not omit any item from the provided menu list, no matter how small or simple it appears
+When items appear under subcategories (e.g., Egg Dishes, Extras, Snacks), assign them to the most logical primary category based on the required category structure
+Ensure all prices are preserved exactly as provided in UGX currency
+Output must be valid, parseable JSON that can be directly imported into the POS system
+If any item appears ambiguous in its category assignment, note this in the completion summary with your reasoning
+
+## Starters
+
+### Salads
+- CHEFS CAESAR SALAD UGX 25,000
+- OVACADO SUNRISE UGX 25,000
+- CHICKEN SALADS UGX 25,000
+- SWEET CHICKEN COLESLOW UGX 25,000
+- AMERICAN EGGS SALAD UGX 20,000
+
+### Soups
+- CLEAR VEGETABLE SOUP UGX 10,000
+- CARROTS SOUP UGX 10,000
+- TOMATO SOUP UGX 10,000
+- CARROT & GINGER SOUP UGX 15,000
+- MUSHROOM SOUP UGX 20,000
+- SPAGHETTI & CHICKEN SOUP UGX 20,000
+
+## Breakfast
+- SOURCE GARDEN ENGLISH BREAKFAST UGX 30,000
+- PETITE BREAKFAST UGX 25,000
+
+### Egg Dishes
+- BOILED EGGS UGX 5,000
+- POACHED EGGS UGX 5,000
+- FRIED EGGS UGX 8,000
+- CHEESE OMELETTE UGX 8,000
+- SPANISH TOMATO • PLAIN MUSHROOM • SCRAMBLE OMELETTE UGX 5,000
+
+## Snacks
+- CHICKEN WINGS UGX 30,000
+- CHICKEN NUGGETS UGX 20,000
+- CHICKEN PAKODA UGX 20,000
+- ONION RINGS UGX 10,000
+- MOZARELLA BITES UGX 20,000
+- PLAIN CHIPS UGX 10,000
+- MATOOKE CRISPY UGX 10,000
+- CHIPS IN MASALA SAUCE UGX 15,000
+- FRENCH FRIED CHIPS UGX 15,000
+- CHAPATTI UGX 3,000
+- BEEF SAMOSA (PAIR) UGX 5,000
+- VEGETABLE SAMOSA (PAIR) UGX 5,000
+- PLAIN SAUSAGES (PAIR) UGX 6,000
+- ENGLISH PAN CAKES UGX 10,000
+- TOASTED BREAD UGX 5,000
+- VEGETABLE SPRING ROLLS (PAIR) UGX 5,000
+
+## Main Course
+- NILE SPECIAL FISH UGX 40,000
+- PREMIUM WHOLE FISH UGX 35,000
+- SPECIAL GRILLED WHOLE TILAPIA UGX 35,000
+- FRESH FISH STEW UGX 35,000
+- FISH FINGERS UGX 25,000
+- DEEP FRIED FISH STEW UGX 35,000
+- FISH ENGLISH FILLET UGX 25,000
+- LOW FAT WHOLE FISH UGX 35,000
+- LIVER PRINCESS UGX 25,000
+- SUPREME OF CHICKEN UGX 30,000
+- A QUARTER CHICKEN UGX 25,000
+- PAN-FRIED BEEF UGX 25,000
+- PAN-FRIED GOAT UGX 30,000
+
+## Burgers and Sandwiches
+- CHICKEN BURGER UGX 20,000
+- BEEF BURGER UGX 20,000
+- VEGETABLE BURGER UGX 20,000
+- CHICKEN SANDWICH UGX 20,000
+- BEEF SANDWICH UGX 20,000
+- EGG SANDWICH UGX 20,000
+- SAUSAGE SANDWICH UGX 20,000
+- VEGETABLE SANDWICH UGX 15,000
+- CHEESE SANDWICH UGX 15,000
+
+## Steaks and Grills
+- BEEF STROGONOFF UGX 25,000
+- BEEF FILLET UGX 25,000
+- SOURCE GARDEN MIXED GRILL UGX 50,000
+
+## Pizzas
+- MEAT MAGNIFICO
+- MARGHERITA
+- HAWAII
+- FARMER PIZZA
+- VEGETABLE DELUXE
+- SMALL PIZZA - 25,000
+- BIG PIZZA - 35,000
+
+## Pastas
+- SPAGHETTI BOLOGNAISE UGX 25,000
+- SPAGHETTI NAPOLITAN UGX 20,000
+- SPAGHETTI FUNGI UGX 20,000
+
+## Curries
+- CHICKEN CURRY UGX 25,000
+- CHICKEN BIRYANI UGX 30,000
+- MIXED VEGETABLE CURRY UGX 20,000
+- VEGETABLE BIRYANI UGX 20,000
+- CHICKEN TIKKA MASALA UGX 25,000
+
+## African Dishes
+- GOAT KATOGO UGX 20,000
+- BEEF KATOGO UGX 20,000
+- BEEF STEW UGX 25,000
+- AFRICAN STEWS UGX 25,000
+
+### Extras
+- PLAIN RICE UGX 10,000
+- MASHED POTATOES UGX 10,000
+- UGALI OR POSHO UGX 10,000
+- BOILED POTATOES UGX 10,000
+- IRISH JACKETS UGX 10,000
+- MATOOKE JACKETS UGX 10,000
+
+## Buffet Section
+- AFRICAN BUFFET UGX 40,000
+- SPECIAL AFRICAN CHOMA UGX 55,000
+- INDIAN BUFFET UGX 45,000
+- CONTINENTAL UGX 50,000
+
+### Desserts
+- FRUIT PLATTER UGX 15,000
+
+### Fresh Juices
+- PASSION FRUIT UGX 10,000
+- WATERMELON UGX 10,000
+- PINEAPPLE UGX 10,000
+- COCKTAIL JUICE UGX 15,000
+
+## Platters
+- PLATTER FOR 2 UGX 70,000
+- PLATTER FOR 4 UGX 140,000

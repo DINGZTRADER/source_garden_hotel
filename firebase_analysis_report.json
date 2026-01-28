@@ -1,0 +1,5229 @@
+{
+  "collections": {},
+  "write_operations": [],
+  "update_operations": [
+    {
+      "file": "src\\App.js",
+      "line": 494,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', userId), {",
+      "context": [
+        {
+          "line_num": 489,
+          "code": "}, [userId, currentShift]);"
+        },
+        {
+          "line_num": 491,
+          "code": "// Update shift metrics"
+        },
+        {
+          "line_num": 492,
+          "code": "const updateShiftMetrics = useCallback(async (orderTotal, items) => {"
+        },
+        {
+          "line_num": 493,
+          "code": "if (!userId || !currentShift) return;"
+        },
+        {
+          "line_num": 494,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', userId), {"
+        },
+        {
+          "line_num": 495,
+          "code": "ordersCount: increment(1),"
+        },
+        {
+          "line_num": 496,
+          "code": "totalSales: increment(orderTotal),"
+        },
+        {
+          "line_num": 497,
+          "code": "itemsSold: arrayUnion(...items.map(i => ({ name: i.name, qty: i.qty, price: i.price })))"
+        },
+        {
+          "line_num": 498,
+          "code": "});"
+        },
+        {
+          "line_num": 499,
+          "code": "}, [userId, currentShift]);"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 559,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', item.id), {",
+      "context": [
+        {
+          "line_num": 554,
+          "code": "const currentQty = itemDoc?.quantity || 0;"
+        },
+        {
+          "line_num": 556,
+          "code": "if (currentQty < quantity) throw new Error('Insufficient stock in main store');"
+        },
+        {
+          "line_num": 558,
+          "code": "// Decrease main store"
+        },
+        {
+          "line_num": 559,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', item.id), {"
+        },
+        {
+          "line_num": 560,
+          "code": "quantity: increment(-quantity),"
+        },
+        {
+          "line_num": 561,
+          "code": "lastUpdated: new Date().toISOString(),"
+        },
+        {
+          "line_num": 562,
+          "code": "});"
+        },
+        {
+          "line_num": 564,
+          "code": "// Log the issue transaction"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 614,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', centerId, 'items', itemId), {",
+      "context": [
+        {
+          "line_num": 609,
+          "code": "receivedBy,"
+        },
+        {
+          "line_num": 610,
+          "code": "});"
+        },
+        {
+          "line_num": 611,
+          "code": "};"
+        },
+        {
+          "line_num": 613,
+          "code": "const recordSale = async (itemId, quantity) => {"
+        },
+        {
+          "line_num": 614,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', centerId, 'items', itemId), {"
+        },
+        {
+          "line_num": 615,
+          "code": "quantity: increment(-quantity),"
+        },
+        {
+          "line_num": 616,
+          "code": "lastSold: new Date().toISOString(),"
+        },
+        {
+          "line_num": 617,
+          "code": "});"
+        },
+        {
+          "line_num": 618,
+          "code": "};"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 670,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {",
+      "context": [
+        {
+          "line_num": 665,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), reqData);"
+        },
+        {
+          "line_num": 666,
+          "code": "return reqId;"
+        },
+        {
+          "line_num": 667,
+          "code": "};"
+        },
+        {
+          "line_num": 669,
+          "code": "const approveRequisition = async (reqId, approverName) => {"
+        },
+        {
+          "line_num": 670,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {"
+        },
+        {
+          "line_num": 671,
+          "code": "status: 'approved',"
+        },
+        {
+          "line_num": 672,
+          "code": "approvedBy: approverName,"
+        },
+        {
+          "line_num": 673,
+          "code": "approvedAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 674,
+          "code": "updatedAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 675,
+          "code": "});"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 679,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {",
+      "context": [
+        {
+          "line_num": 674,
+          "code": "updatedAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 675,
+          "code": "});"
+        },
+        {
+          "line_num": 676,
+          "code": "};"
+        },
+        {
+          "line_num": 678,
+          "code": "const rejectRequisition = async (reqId, approverName, reason) => {"
+        },
+        {
+          "line_num": 679,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {"
+        },
+        {
+          "line_num": 680,
+          "code": "status: 'rejected',"
+        },
+        {
+          "line_num": 681,
+          "code": "rejectedBy: approverName,"
+        },
+        {
+          "line_num": 682,
+          "code": "rejectedAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 683,
+          "code": "rejectionReason: reason,"
+        },
+        {
+          "line_num": 684,
+          "code": "updatedAt: new Date().toISOString(),"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 689,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {",
+      "context": [
+        {
+          "line_num": 684,
+          "code": "updatedAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 685,
+          "code": "});"
+        },
+        {
+          "line_num": 686,
+          "code": "};"
+        },
+        {
+          "line_num": 688,
+          "code": "const fulfillRequisition = async (reqId, issuerName) => {"
+        },
+        {
+          "line_num": 689,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {"
+        },
+        {
+          "line_num": 690,
+          "code": "status: 'fulfilled',"
+        },
+        {
+          "line_num": 691,
+          "code": "issuedBy: issuerName,"
+        },
+        {
+          "line_num": 692,
+          "code": "issuedAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 693,
+          "code": "updatedAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 694,
+          "code": "});"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 738,
+      "code": "await updateDoc(docRef, {",
+      "context": [
+        {
+          "line_num": 733,
+          "code": "if (!staffId) return;"
+        },
+        {
+          "line_num": 734,
+          "code": "const currentMonth = new Date().toISOString().slice(0, 7);"
+        },
+        {
+          "line_num": 735,
+          "code": "const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'staffPerformance', `${staffId}_${currentMonth}`);"
+        },
+        {
+          "line_num": 737,
+          "code": "try {"
+        },
+        {
+          "line_num": 738,
+          "code": "await updateDoc(docRef, {"
+        },
+        {
+          "line_num": 739,
+          "code": "totalSales: increment(orderTotal),"
+        },
+        {
+          "line_num": 740,
+          "code": "ordersCount: increment(1),"
+        },
+        {
+          "line_num": 741,
+          "code": "itemsSold: increment(itemsCount),"
+        },
+        {
+          "line_num": 742,
+          "code": "lastUpdated: new Date().toISOString(),"
+        },
+        {
+          "line_num": 743,
+          "code": "});"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 1215,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', selectedRoom.id), {",
+      "context": [
+        {
+          "line_num": 1210,
+          "code": "const pendingKey = `pending_checkin_${selectedRoom.id}`;"
+        },
+        {
+          "line_num": 1211,
+          "code": "localStorage.setItem(pendingKey, JSON.stringify(checkInData));"
+        },
+        {
+          "line_num": 1213,
+          "code": "try {"
+        },
+        {
+          "line_num": 1214,
+          "code": "// STEP 2: Write to Firestore"
+        },
+        {
+          "line_num": 1215,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', selectedRoom.id), {"
+        },
+        {
+          "line_num": 1216,
+          "code": "status: checkInData.status,"
+        },
+        {
+          "line_num": 1217,
+          "code": "guest: checkInData.guest"
+        },
+        {
+          "line_num": 1218,
+          "code": "});"
+        },
+        {
+          "line_num": 1220,
+          "code": "// STEP 3: Clear pending only after success"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 1254,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', room.id), { status: 'dirty', guest: null });",
+      "context": [
+        {
+          "line_num": 1249,
+          "code": "...checkoutRecord,"
+        },
+        {
+          "line_num": 1250,
+          "code": "status: 'completed'"
+        },
+        {
+          "line_num": 1251,
+          "code": "});"
+        },
+        {
+          "line_num": 1253,
+          "code": "// STEP 3: Now safe to clear room"
+        },
+        {
+          "line_num": 1254,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', room.id), { status: 'dirty', guest: null });"
+        },
+        {
+          "line_num": 1256,
+          "code": "// STEP 4: Clear local archive only after both writes succeed"
+        },
+        {
+          "line_num": 1257,
+          "code": "localStorage.removeItem(archiveKey);"
+        },
+        {
+          "line_num": 1259,
+          "code": "alert(`\u2713 Checked out from ${room.number}`); setSelectedRoom(null);"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 1267,
+      "code": "try { await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', room.id), { status: 'clean' }); alert(`\u2713 ${room.number} marked clean`); setSelectedRoom(null); } catch (e) { alert(\"Failed: \" + e.message); }",
+      "context": [
+        {
+          "line_num": 1262,
+          "code": "alert(\"Check-out failed (guest data preserved locally): \" + e.message);"
+        },
+        {
+          "line_num": 1263,
+          "code": "}"
+        },
+        {
+          "line_num": 1264,
+          "code": "};"
+        },
+        {
+          "line_num": 1266,
+          "code": "const handleMarkClean = async (room) => {"
+        },
+        {
+          "line_num": 1267,
+          "code": "try { await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', room.id), { status: 'clean' }); alert(`\u2713 ${room.number} marked clean`); setSelectedRoom(null); } catch (e) { alert(\"Failed: \" + e.message); }"
+        },
+        {
+          "line_num": 1268,
+          "code": "};"
+        },
+        {
+          "line_num": 1270,
+          "code": "const getStatusColor = (status) => ({ occupied: 'bg-red-500', dirty: 'bg-amber-500' }[status] || 'bg-emerald-500');"
+        },
+        {
+          "line_num": 1271,
+          "code": "const stats = { total: rooms.length, occupied: rooms.filter(r => r.status === 'occupied').length, available: rooms.filter(r => r.status === 'clean').length, dirty: rooms.filter(r => r.status === 'dirty').length };"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 1444,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', room.id), {",
+      "context": [
+        {
+          "line_num": 1439,
+          "code": "setIsSubmitting(true);"
+        },
+        {
+          "line_num": 1441,
+          "code": "try {"
+        },
+        {
+          "line_num": 1442,
+          "code": "// Add laundry charges to room"
+        },
+        {
+          "line_num": 1443,
+          "code": "const chargeDescription = `Laundry: ${laundryCart.map(i => `${i.qty}x ${i.name}`).join(', ')}`;"
+        },
+        {
+          "line_num": 1444,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', room.id), {"
+        },
+        {
+          "line_num": 1445,
+          "code": "\"guest.charges\": arrayUnion({"
+        },
+        {
+          "line_num": 1446,
+          "code": "description: chargeDescription,"
+        },
+        {
+          "line_num": 1447,
+          "code": "amount: total,"
+        },
+        {
+          "line_num": 1448,
+          "code": "date: new Date().toISOString(),"
+        },
+        {
+          "line_num": 1449,
+          "code": "type: 'laundry',"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 1644,
+      "code": "if (item.type === 'bar') await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', item.id), { stock_sold: increment(item.qty) });",
+      "context": [
+        {
+          "line_num": 1639,
+          "code": "clearCart();"
+        },
+        {
+          "line_num": 1641,
+          "code": "// STEP 4: Secondary writes (stock, room charges, performance updates)"
+        },
+        {
+          "line_num": 1642,
+          "code": "try {"
+        },
+        {
+          "line_num": 1643,
+          "code": "for (const item of txPayload.items) {"
+        },
+        {
+          "line_num": 1644,
+          "code": "if (item.type === 'bar') await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', item.id), { stock_sold: increment(item.qty) });"
+        },
+        {
+          "line_num": 1645,
+          "code": "}"
+        },
+        {
+          "line_num": 1646,
+          "code": "if (method === 'room' && roomId) {"
+        },
+        {
+          "line_num": 1647,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', roomId), { \"guest.charges\": arrayUnion({ description: `POS: ${txPayload.items.map(i => i.name).join(', ')}`, amount: total, date: txPayload.date, staff: staffName }) });"
+        },
+        {
+          "line_num": 1648,
+          "code": "}"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 1647,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', roomId), { \"guest.charges\": arrayUnion({ description: `POS: ${txPayload.items.map(i => i.name).join(', ')}`, amount: total, date: txPayload.date, staff: staffName }) });",
+      "context": [
+        {
+          "line_num": 1642,
+          "code": "try {"
+        },
+        {
+          "line_num": 1643,
+          "code": "for (const item of txPayload.items) {"
+        },
+        {
+          "line_num": 1644,
+          "code": "if (item.type === 'bar') await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', item.id), { stock_sold: increment(item.qty) });"
+        },
+        {
+          "line_num": 1645,
+          "code": "}"
+        },
+        {
+          "line_num": 1646,
+          "code": "if (method === 'room' && roomId) {"
+        },
+        {
+          "line_num": 1647,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', roomId), { \"guest.charges\": arrayUnion({ description: `POS: ${txPayload.items.map(i => i.name).join(', ')}`, amount: total, date: txPayload.date, staff: staffName }) });"
+        },
+        {
+          "line_num": 1648,
+          "code": "}"
+        },
+        {
+          "line_num": 1650,
+          "code": "// STEP 4b: Update staff shift metrics"
+        },
+        {
+          "line_num": 1651,
+          "code": "const currentUserId = auth.currentUser?.uid;"
+        },
+        {
+          "line_num": 1652,
+          "code": "if (currentUserId) {"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 1656,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', currentUserId), {",
+      "context": [
+        {
+          "line_num": 1651,
+          "code": "const currentUserId = auth.currentUser?.uid;"
+        },
+        {
+          "line_num": 1652,
+          "code": "if (currentUserId) {"
+        },
+        {
+          "line_num": 1653,
+          "code": "try {"
+        },
+        {
+          "line_num": 1654,
+          "code": "const shiftDoc = await getDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', currentUserId));"
+        },
+        {
+          "line_num": 1655,
+          "code": "if (shiftDoc.exists()) {"
+        },
+        {
+          "line_num": 1656,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', currentUserId), {"
+        },
+        {
+          "line_num": 1657,
+          "code": "ordersCount: increment(1),"
+        },
+        {
+          "line_num": 1658,
+          "code": "totalSales: increment(total),"
+        },
+        {
+          "line_num": 1659,
+          "code": "itemsSold: arrayUnion(...cart.map(i => ({ name: i.name, qty: i.qty, price: i.price, time: new Date().toISOString() })))"
+        },
+        {
+          "line_num": 1660,
+          "code": "});"
+        },
+        {
+          "line_num": 1661,
+          "code": "}"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 1670,
+      "code": "await updateDoc(perfDocRef, {",
+      "context": [
+        {
+          "line_num": 1666,
+          "code": "// STEP 4c: Update monthly performance"
+        },
+        {
+          "line_num": 1667,
+          "code": "const currentMonth = new Date().toISOString().slice(0, 7);"
+        },
+        {
+          "line_num": 1668,
+          "code": "const perfDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'staffPerformance', `${currentUserId}_${currentMonth}`);"
+        },
+        {
+          "line_num": 1669,
+          "code": "try {"
+        },
+        {
+          "line_num": 1670,
+          "code": "await updateDoc(perfDocRef, {"
+        },
+        {
+          "line_num": 1671,
+          "code": "totalSales: increment(total),"
+        },
+        {
+          "line_num": 1672,
+          "code": "ordersCount: increment(1),"
+        },
+        {
+          "line_num": 1673,
+          "code": "itemsSold: increment(txPayload.itemsCount),"
+        },
+        {
+          "line_num": 1674,
+          "code": "lastUpdated: new Date().toISOString(),"
+        },
+        {
+          "line_num": 1675,
+          "code": "});"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 2049,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', itemId), { [field]: numVal });",
+      "context": [
+        {
+          "line_num": 2044,
+          "code": "setLocalEdits(prev => ({ ...prev, [key]: numVal }));"
+        },
+        {
+          "line_num": 2046,
+          "code": "if (debounceTimers.current[key]) clearTimeout(debounceTimers.current[key]);"
+        },
+        {
+          "line_num": 2047,
+          "code": "debounceTimers.current[key] = setTimeout(async () => {"
+        },
+        {
+          "line_num": 2048,
+          "code": "try {"
+        },
+        {
+          "line_num": 2049,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', itemId), { [field]: numVal });"
+        },
+        {
+          "line_num": 2050,
+          "code": "setLocalEdits(prev => { const next = {...prev}; delete next[key]; return next; });"
+        },
+        {
+          "line_num": 2051,
+          "code": "} catch (e) {"
+        },
+        {
+          "line_num": 2052,
+          "code": "console.error(\"Stock update failed:\", e);"
+        },
+        {
+          "line_num": 2053,
+          "code": "alert(`Failed to save ${field} for item. Will retry.`);"
+        },
+        {
+          "line_num": 2054,
+          "code": "}"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 3438,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'events', selectedEvent.id), {",
+      "context": [
+        {
+          "line_num": 3433,
+          "code": "};"
+        },
+        {
+          "line_num": 3435,
+          "code": "const updatedPayments = [...(selectedEvent.payments || []), payment];"
+        },
+        {
+          "line_num": 3437,
+          "code": "try {"
+        },
+        {
+          "line_num": 3438,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'events', selectedEvent.id), {"
+        },
+        {
+          "line_num": 3439,
+          "code": "payments: updatedPayments"
+        },
+        {
+          "line_num": 3440,
+          "code": "});"
+        },
+        {
+          "line_num": 3441,
+          "code": "setSelectedEvent({ ...selectedEvent, payments: updatedPayments });"
+        },
+        {
+          "line_num": 3442,
+          "code": "resetPaymentForm();"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 4034,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', selectedItem.id), {",
+      "context": [
+        {
+          "line_num": 4029,
+          "code": "}"
+        },
+        {
+          "line_num": 4031,
+          "code": "const txId = `ISS-${Date.now()}`;"
+        },
+        {
+          "line_num": 4032,
+          "code": "try {"
+        },
+        {
+          "line_num": 4033,
+          "code": "// Decrease main store"
+        },
+        {
+          "line_num": 4034,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', selectedItem.id), {"
+        },
+        {
+          "line_num": 4035,
+          "code": "quantity: increment(-issueQty),"
+        },
+        {
+          "line_num": 4036,
+          "code": "lastUpdated: new Date().toISOString(),"
+        },
+        {
+          "line_num": 4037,
+          "code": "});"
+        },
+        {
+          "line_num": 4039,
+          "code": "// Increase service center"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 4388,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', req.id), {",
+      "context": [
+        {
+          "line_num": 4383,
+          "code": "};"
+        },
+        {
+          "line_num": 4385,
+          "code": "// Approve requisition"
+        },
+        {
+          "line_num": 4386,
+          "code": "const handleApprove = async (req) => {"
+        },
+        {
+          "line_num": 4387,
+          "code": "try {"
+        },
+        {
+          "line_num": 4388,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', req.id), {"
+        },
+        {
+          "line_num": 4389,
+          "code": "status: 'approved',"
+        },
+        {
+          "line_num": 4390,
+          "code": "approvedBy: staffName,"
+        },
+        {
+          "line_num": 4391,
+          "code": "approvedAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 4392,
+          "code": "updatedAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 4393,
+          "code": "});"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 4405,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', req.id), {",
+      "context": [
+        {
+          "line_num": 4400,
+          "code": "// Reject requisition"
+        },
+        {
+          "line_num": 4401,
+          "code": "const handleReject = async (req) => {"
+        },
+        {
+          "line_num": 4402,
+          "code": "const reason = window.prompt('Rejection reason:');"
+        },
+        {
+          "line_num": 4403,
+          "code": "if (!reason) return;"
+        },
+        {
+          "line_num": 4404,
+          "code": "try {"
+        },
+        {
+          "line_num": 4405,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', req.id), {"
+        },
+        {
+          "line_num": 4406,
+          "code": "status: 'rejected',"
+        },
+        {
+          "line_num": 4407,
+          "code": "rejectedBy: staffName,"
+        },
+        {
+          "line_num": 4408,
+          "code": "rejectedAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 4409,
+          "code": "rejectionReason: reason,"
+        },
+        {
+          "line_num": 4410,
+          "code": "updatedAt: new Date().toISOString(),"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 4430,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', item.itemId), {",
+      "context": [
+        {
+          "line_num": 4425,
+          "code": "alert(`Insufficient stock for ${item.itemName}`);"
+        },
+        {
+          "line_num": 4426,
+          "code": "return;"
+        },
+        {
+          "line_num": 4427,
+          "code": "}"
+        },
+        {
+          "line_num": 4429,
+          "code": "// Decrease main store"
+        },
+        {
+          "line_num": 4430,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', item.itemId), {"
+        },
+        {
+          "line_num": 4431,
+          "code": "quantity: increment(-item.quantity),"
+        },
+        {
+          "line_num": 4432,
+          "code": "lastUpdated: new Date().toISOString(),"
+        },
+        {
+          "line_num": 4433,
+          "code": "});"
+        },
+        {
+          "line_num": 4435,
+          "code": "// Increase service center"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 4463,
+      "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', req.id), {",
+      "context": [
+        {
+          "line_num": 4458,
+          "code": "date: new Date().toISOString(),"
+        },
+        {
+          "line_num": 4459,
+          "code": "});"
+        },
+        {
+          "line_num": 4460,
+          "code": "}"
+        },
+        {
+          "line_num": 4462,
+          "code": "// Update requisition status"
+        },
+        {
+          "line_num": 4463,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', req.id), {"
+        },
+        {
+          "line_num": 4464,
+          "code": "status: 'fulfilled',"
+        },
+        {
+          "line_num": 4465,
+          "code": "issuedBy: staffName,"
+        },
+        {
+          "line_num": 4466,
+          "code": "issuedAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 4467,
+          "code": "updatedAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 4468,
+          "code": "});"
+        }
+      ]
+    }
+  ],
+  "delete_operations": [
+    {
+      "file": "src\\App.js",
+      "line": 488,
+      "code": "await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', userId));",
+      "context": [
+        {
+          "line_num": 483,
+          "code": "doc(db, 'artifacts', appId, 'public', 'data', 'shiftHistory', currentShift.shiftId),"
+        },
+        {
+          "line_num": 484,
+          "code": "{ ...currentShift, logoutTime: now, status: 'completed', shiftDuration, ...summary }"
+        },
+        {
+          "line_num": 485,
+          "code": ");"
+        },
+        {
+          "line_num": 487,
+          "code": "// Clear current shift"
+        },
+        {
+          "line_num": 488,
+          "code": "await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', userId));"
+        },
+        {
+          "line_num": 489,
+          "code": "}, [userId, currentShift]);"
+        },
+        {
+          "line_num": 491,
+          "code": "// Update shift metrics"
+        },
+        {
+          "line_num": 492,
+          "code": "const updateShiftMetrics = useCallback(async (orderTotal, items) => {"
+        },
+        {
+          "line_num": 493,
+          "code": "if (!userId || !currentShift) return;"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 3456,
+      "code": "await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'events', eventId));",
+      "context": [
+        {
+          "line_num": 3451,
+          "code": "};"
+        },
+        {
+          "line_num": 3453,
+          "code": "const handleDeleteEvent = async (eventId) => {"
+        },
+        {
+          "line_num": 3454,
+          "code": "if (!window.confirm('Are you sure you want to delete this event?')) return;"
+        },
+        {
+          "line_num": 3455,
+          "code": "try {"
+        },
+        {
+          "line_num": 3456,
+          "code": "await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'events', eventId));"
+        },
+        {
+          "line_num": 3457,
+          "code": "setSelectedEvent(null);"
+        },
+        {
+          "line_num": 3458,
+          "code": "} catch (e) {"
+        },
+        {
+          "line_num": 3459,
+          "code": "alert('Failed to delete event: ' + e.message);"
+        },
+        {
+          "line_num": 3460,
+          "code": "}"
+        },
+        {
+          "line_num": 3461,
+          "code": "};"
+        }
+      ]
+    }
+  ],
+  "set_operations": [
+    {
+      "file": "src\\App.js",
+      "line": 319,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sales', tx.id), { ...tx, status: 'confirmed', synced: true, syncedAt: new Date().toISOString() });",
+      "context": [
+        {
+          "line_num": 314,
+          "code": "if (syncing || queue.length === 0) return;"
+        },
+        {
+          "line_num": 315,
+          "code": "setSyncing(true);"
+        },
+        {
+          "line_num": 317,
+          "code": "for (const tx of queue) {"
+        },
+        {
+          "line_num": 318,
+          "code": "try {"
+        },
+        {
+          "line_num": 319,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sales', tx.id), { ...tx, status: 'confirmed', synced: true, syncedAt: new Date().toISOString() });"
+        },
+        {
+          "line_num": 320,
+          "code": "setQueue(prev => prev.filter(t => t.id !== tx.id));"
+        },
+        {
+          "line_num": 321,
+          "code": "console.log(`Synced offline TX: ${tx.id}`);"
+        },
+        {
+          "line_num": 322,
+          "code": "} catch (e) {"
+        },
+        {
+          "line_num": 323,
+          "code": "console.error(`Failed to sync TX ${tx.id}:`, e);"
+        },
+        {
+          "line_num": 324,
+          "code": "break;"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 358,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'voids', voidRecord.id), { ...voidRecord, synced: true, syncedAt: new Date().toISOString() });",
+      "context": [
+        {
+          "line_num": 353,
+          "code": "if (syncingVoids || voidQueue.length === 0) return;"
+        },
+        {
+          "line_num": 354,
+          "code": "setSyncingVoids(true);"
+        },
+        {
+          "line_num": 356,
+          "code": "for (const voidRecord of voidQueue) {"
+        },
+        {
+          "line_num": 357,
+          "code": "try {"
+        },
+        {
+          "line_num": 358,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'voids', voidRecord.id), { ...voidRecord, synced: true, syncedAt: new Date().toISOString() });"
+        },
+        {
+          "line_num": 359,
+          "code": "setVoidQueue(prev => prev.filter(v => v.id !== voidRecord.id));"
+        },
+        {
+          "line_num": 360,
+          "code": "console.log(`Synced offline VOID: ${voidRecord.id}`);"
+        },
+        {
+          "line_num": 361,
+          "code": "} catch (e) {"
+        },
+        {
+          "line_num": 362,
+          "code": "console.error(`Failed to sync VOID ${voidRecord.id}:`, e);"
+        },
+        {
+          "line_num": 363,
+          "code": "break;"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 400,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'workPeriods', 'current'), {",
+      "context": [
+        {
+          "line_num": 395,
+          "code": "}, []);"
+        },
+        {
+          "line_num": 397,
+          "code": "const openWorkPeriod = async (staffName) => {"
+        },
+        {
+          "line_num": 398,
+          "code": "const now = new Date().toISOString();"
+        },
+        {
+          "line_num": 399,
+          "code": "const periodId = `WP-${Date.now()}`;"
+        },
+        {
+          "line_num": 400,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'workPeriods', 'current'), {"
+        },
+        {
+          "line_num": 401,
+          "code": "id: periodId,"
+        },
+        {
+          "line_num": 402,
+          "code": "status: 'open',"
+        },
+        {
+          "line_num": 403,
+          "code": "openedAt: now,"
+        },
+        {
+          "line_num": 404,
+          "code": "openedBy: staffName,"
+        },
+        {
+          "line_num": 405,
+          "code": "closedAt: null,"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 417,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'workPeriods', workPeriod.id), {",
+      "context": [
+        {
+          "line_num": 412,
+          "code": "const closeWorkPeriod = async (staffName, summary) => {"
+        },
+        {
+          "line_num": 413,
+          "code": "if (!workPeriod) return;"
+        },
+        {
+          "line_num": 414,
+          "code": "const now = new Date().toISOString();"
+        },
+        {
+          "line_num": 416,
+          "code": "// Archive the work period"
+        },
+        {
+          "line_num": 417,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'workPeriods', workPeriod.id), {"
+        },
+        {
+          "line_num": 418,
+          "code": "...workPeriod,"
+        },
+        {
+          "line_num": 419,
+          "code": "status: 'closed',"
+        },
+        {
+          "line_num": 420,
+          "code": "closedAt: now,"
+        },
+        {
+          "line_num": 421,
+          "code": "closedBy: staffName,"
+        },
+        {
+          "line_num": 422,
+          "code": "...summary"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 426,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'workPeriods', 'current'), {",
+      "context": [
+        {
+          "line_num": 421,
+          "code": "closedBy: staffName,"
+        },
+        {
+          "line_num": 422,
+          "code": "...summary"
+        },
+        {
+          "line_num": 423,
+          "code": "});"
+        },
+        {
+          "line_num": 425,
+          "code": "// Clear current"
+        },
+        {
+          "line_num": 426,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'workPeriods', 'current'), {"
+        },
+        {
+          "line_num": 427,
+          "code": "status: 'closed',"
+        },
+        {
+          "line_num": 428,
+          "code": "lastPeriodId: workPeriod.id,"
+        },
+        {
+          "line_num": 429,
+          "code": "closedAt: now"
+        },
+        {
+          "line_num": 430,
+          "code": "});"
+        },
+        {
+          "line_num": 431,
+          "code": "};"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 469,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', userId), shiftData);",
+      "context": [
+        {
+          "line_num": 464,
+          "code": "status: 'active',"
+        },
+        {
+          "line_num": 465,
+          "code": "ordersCount: 0,"
+        },
+        {
+          "line_num": 466,
+          "code": "totalSales: 0,"
+        },
+        {
+          "line_num": 467,
+          "code": "itemsSold: [],"
+        },
+        {
+          "line_num": 468,
+          "code": "};"
+        },
+        {
+          "line_num": 469,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', userId), shiftData);"
+        },
+        {
+          "line_num": 470,
+          "code": "return shiftData;"
+        },
+        {
+          "line_num": 471,
+          "code": "}, [userId, staffName, serviceCenter]);"
+        },
+        {
+          "line_num": 473,
+          "code": "// End shift on logout"
+        },
+        {
+          "line_num": 474,
+          "code": "const endShift = useCallback(async (summary = {}) => {"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 482,
+      "code": "await setDoc(",
+      "context": [
+        {
+          "line_num": 477,
+          "code": "const shiftDuration = currentShift.loginTime"
+        },
+        {
+          "line_num": 478,
+          "code": "? Math.round((new Date(now) - new Date(currentShift.loginTime)) / (1000 * 60))"
+        },
+        {
+          "line_num": 479,
+          "code": ": 0;"
+        },
+        {
+          "line_num": 481,
+          "code": "// Archive the shift"
+        },
+        {
+          "line_num": 482,
+          "code": "await setDoc("
+        },
+        {
+          "line_num": 483,
+          "code": "doc(db, 'artifacts', appId, 'public', 'data', 'shiftHistory', currentShift.shiftId),"
+        },
+        {
+          "line_num": 484,
+          "code": "{ ...currentShift, logoutTime: now, status: 'completed', shiftDuration, ...summary }"
+        },
+        {
+          "line_num": 485,
+          "code": ");"
+        },
+        {
+          "line_num": 487,
+          "code": "// Clear current shift"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 524,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', item.id), {",
+      "context": [
+        {
+          "line_num": 519,
+          "code": "const txId = `RCV-${Date.now()}`;"
+        },
+        {
+          "line_num": 520,
+          "code": "const itemDoc = mainStoreStock.find(s => s.itemId === item.id);"
+        },
+        {
+          "line_num": 521,
+          "code": "const newQty = (itemDoc?.quantity || 0) + quantity;"
+        },
+        {
+          "line_num": 523,
+          "code": "// Update stock level"
+        },
+        {
+          "line_num": 524,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', item.id), {"
+        },
+        {
+          "line_num": 525,
+          "code": "itemId: item.id,"
+        },
+        {
+          "line_num": 526,
+          "code": "itemName: item.name,"
+        },
+        {
+          "line_num": 527,
+          "code": "category: item.category,"
+        },
+        {
+          "line_num": 528,
+          "code": "type: item.type,"
+        },
+        {
+          "line_num": 529,
+          "code": "quantity: newQty,"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 536,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {",
+      "context": [
+        {
+          "line_num": 531,
+          "code": "lastUpdated: new Date().toISOString(),"
+        },
+        {
+          "line_num": 532,
+          "code": "minThreshold: item.minThreshold || 10,"
+        },
+        {
+          "line_num": 533,
+          "code": "});"
+        },
+        {
+          "line_num": 535,
+          "code": "// Log the receipt transaction"
+        },
+        {
+          "line_num": 536,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {"
+        },
+        {
+          "line_num": 537,
+          "code": "id: txId,"
+        },
+        {
+          "line_num": 538,
+          "code": "type: 'receive',"
+        },
+        {
+          "line_num": 539,
+          "code": "itemId: item.id,"
+        },
+        {
+          "line_num": 540,
+          "code": "itemName: item.name,"
+        },
+        {
+          "line_num": 541,
+          "code": "quantity,"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 565,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {",
+      "context": [
+        {
+          "line_num": 560,
+          "code": "quantity: increment(-quantity),"
+        },
+        {
+          "line_num": 561,
+          "code": "lastUpdated: new Date().toISOString(),"
+        },
+        {
+          "line_num": 562,
+          "code": "});"
+        },
+        {
+          "line_num": 564,
+          "code": "// Log the issue transaction"
+        },
+        {
+          "line_num": 565,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {"
+        },
+        {
+          "line_num": 566,
+          "code": "id: txId,"
+        },
+        {
+          "line_num": 567,
+          "code": "type: 'issue',"
+        },
+        {
+          "line_num": 568,
+          "code": "itemId: item.id,"
+        },
+        {
+          "line_num": 569,
+          "code": "itemName: item.itemName || item.name,"
+        },
+        {
+          "line_num": 570,
+          "code": "quantity,"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 603,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', centerId, 'items', item.id), {",
+      "context": [
+        {
+          "line_num": 599,
+          "code": "const receiveFromMainStore = async (item, quantity, receivedBy) => {"
+        },
+        {
+          "line_num": 600,
+          "code": "const itemDoc = centerStock.find(s => s.itemId === item.id);"
+        },
+        {
+          "line_num": 601,
+          "code": "const newQty = (itemDoc?.quantity || 0) + quantity;"
+        },
+        {
+          "line_num": 603,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', centerId, 'items', item.id), {"
+        },
+        {
+          "line_num": 604,
+          "code": "itemId: item.id,"
+        },
+        {
+          "line_num": 605,
+          "code": "itemName: item.name,"
+        },
+        {
+          "line_num": 606,
+          "code": "category: item.category,"
+        },
+        {
+          "line_num": 607,
+          "code": "quantity: newQty,"
+        },
+        {
+          "line_num": 608,
+          "code": "lastReceived: new Date().toISOString(),"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 665,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), reqData);",
+      "context": [
+        {
+          "line_num": 660,
+          "code": "approvedAt: null,"
+        },
+        {
+          "line_num": 661,
+          "code": "issuedBy: null,"
+        },
+        {
+          "line_num": 662,
+          "code": "issuedAt: null,"
+        },
+        {
+          "line_num": 663,
+          "code": "};"
+        },
+        {
+          "line_num": 665,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), reqData);"
+        },
+        {
+          "line_num": 666,
+          "code": "return reqId;"
+        },
+        {
+          "line_num": 667,
+          "code": "};"
+        },
+        {
+          "line_num": 669,
+          "code": "const approveRequisition = async (reqId, approverName) => {"
+        },
+        {
+          "line_num": 670,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 746,
+      "code": "await setDoc(docRef, {",
+      "context": [
+        {
+          "line_num": 741,
+          "code": "itemsSold: increment(itemsCount),"
+        },
+        {
+          "line_num": 742,
+          "code": "lastUpdated: new Date().toISOString(),"
+        },
+        {
+          "line_num": 743,
+          "code": "});"
+        },
+        {
+          "line_num": 744,
+          "code": "} catch {"
+        },
+        {
+          "line_num": 745,
+          "code": "// Document doesn't exist, create it"
+        },
+        {
+          "line_num": 746,
+          "code": "await setDoc(docRef, {"
+        },
+        {
+          "line_num": 747,
+          "code": "staffId,"
+        },
+        {
+          "line_num": 748,
+          "code": "serviceCenter,"
+        },
+        {
+          "line_num": 749,
+          "code": "month: currentMonth,"
+        },
+        {
+          "line_num": 750,
+          "code": "totalSales: orderTotal,"
+        },
+        {
+          "line_num": 751,
+          "code": "ordersCount: 1,"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 827,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', u.uid), shiftData);",
+      "context": [
+        {
+          "line_num": 822,
+          "code": "status: 'active',"
+        },
+        {
+          "line_num": 823,
+          "code": "ordersCount: 0,"
+        },
+        {
+          "line_num": 824,
+          "code": "totalSales: 0,"
+        },
+        {
+          "line_num": 825,
+          "code": "itemsSold: [],"
+        },
+        {
+          "line_num": 826,
+          "code": "};"
+        },
+        {
+          "line_num": 827,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', u.uid), shiftData);"
+        },
+        {
+          "line_num": 828,
+          "code": "}"
+        },
+        {
+          "line_num": 829,
+          "code": "} catch (shiftErr) {"
+        },
+        {
+          "line_num": 830,
+          "code": "console.error(\"Error starting shift:\", shiftErr);"
+        },
+        {
+          "line_num": 831,
+          "code": "}"
+        },
+        {
+          "line_num": 832,
+          "code": "}"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 850,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'users', u.uid), newUserData);",
+      "context": [
+        {
+          "line_num": 845,
+          "code": "email: u.email,"
+        },
+        {
+          "line_num": 846,
+          "code": "role: 'admin', // First user gets admin"
+        },
+        {
+          "line_num": 847,
+          "code": "department: null,"
+        },
+        {
+          "line_num": 848,
+          "code": "createdAt: new Date().toISOString()"
+        },
+        {
+          "line_num": 849,
+          "code": "};"
+        },
+        {
+          "line_num": 850,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'users', u.uid), newUserData);"
+        },
+        {
+          "line_num": 851,
+          "code": "setAppUser({ ...newUserData, id: u.uid, photo: u.photoURL });"
+        },
+        {
+          "line_num": 852,
+          "code": "setView('dashboard');"
+        },
+        {
+          "line_num": 853,
+          "code": "}"
+        },
+        {
+          "line_num": 854,
+          "code": "} catch (e) {"
+        },
+        {
+          "line_num": 855,
+          "code": "console.error(\"Error fetching user role:\", e);"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 877,
+      "code": "if (snap.empty) { INITIAL_ROOMS.forEach(r => setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', r.id), r)); setRooms(INITIAL_ROOMS); }",
+      "context": [
+        {
+          "line_num": 872,
+          "code": "setRooms(INITIAL_ROOMS);"
+        },
+        {
+          "line_num": 873,
+          "code": "setMenuItems(INITIAL_MENU);"
+        },
+        {
+          "line_num": 874,
+          "code": "}"
+        },
+        {
+          "line_num": 875,
+          "code": "if (!user || !appUser) return;"
+        },
+        {
+          "line_num": 876,
+          "code": "const unsubRooms = onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'rooms'), (snap) => {"
+        },
+        {
+          "line_num": 877,
+          "code": "if (snap.empty) { INITIAL_ROOMS.forEach(r => setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', r.id), r)); setRooms(INITIAL_ROOMS); }"
+        },
+        {
+          "line_num": 878,
+          "code": "else { setRooms(snap.docs.map(d => ({id: d.id, ...d.data()})).sort((a,b) => { const numA = parseInt(a.number.replace(/\\D/g,'')) || 0; const numB = parseInt(b.number.replace(/\\D/g,'')) || 0; return numA - numB; })); }"
+        },
+        {
+          "line_num": 879,
+          "code": "}, () => setRooms(INITIAL_ROOMS));"
+        },
+        {
+          "line_num": 880,
+          "code": "const unsubMenu = onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'menuItems'), (snap) => {"
+        },
+        {
+          "line_num": 881,
+          "code": "if (snap.empty) { INITIAL_MENU.forEach(m => setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', m.id), m)); setMenuItems(INITIAL_MENU); }"
+        },
+        {
+          "line_num": 882,
+          "code": "else { setMenuItems(snap.docs.map(d => ({id: d.id, ...d.data()}))); }"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 881,
+      "code": "if (snap.empty) { INITIAL_MENU.forEach(m => setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', m.id), m)); setMenuItems(INITIAL_MENU); }",
+      "context": [
+        {
+          "line_num": 876,
+          "code": "const unsubRooms = onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'rooms'), (snap) => {"
+        },
+        {
+          "line_num": 877,
+          "code": "if (snap.empty) { INITIAL_ROOMS.forEach(r => setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', r.id), r)); setRooms(INITIAL_ROOMS); }"
+        },
+        {
+          "line_num": 878,
+          "code": "else { setRooms(snap.docs.map(d => ({id: d.id, ...d.data()})).sort((a,b) => { const numA = parseInt(a.number.replace(/\\D/g,'')) || 0; const numB = parseInt(b.number.replace(/\\D/g,'')) || 0; return numA - numB; })); }"
+        },
+        {
+          "line_num": 879,
+          "code": "}, () => setRooms(INITIAL_ROOMS));"
+        },
+        {
+          "line_num": 880,
+          "code": "const unsubMenu = onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'menuItems'), (snap) => {"
+        },
+        {
+          "line_num": 881,
+          "code": "if (snap.empty) { INITIAL_MENU.forEach(m => setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', m.id), m)); setMenuItems(INITIAL_MENU); }"
+        },
+        {
+          "line_num": 882,
+          "code": "else { setMenuItems(snap.docs.map(d => ({id: d.id, ...d.data()}))); }"
+        },
+        {
+          "line_num": 883,
+          "code": "}, () => setMenuItems(INITIAL_MENU));"
+        },
+        {
+          "line_num": 884,
+          "code": "return () => { unsubRooms(); unsubMenu(); };"
+        },
+        {
+          "line_num": 885,
+          "code": "}, [user, appUser, rooms.length]);"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 1248,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'checkouts', checkoutId), {",
+      "context": [
+        {
+          "line_num": 1243,
+          "code": "localStorage.setItem(archiveKey, JSON.stringify(checkoutRecord));"
+        },
+        {
+          "line_num": 1245,
+          "code": "try {"
+        },
+        {
+          "line_num": 1246,
+          "code": "// STEP 2: Also write checkout record to Firestore for permanent audit"
+        },
+        {
+          "line_num": 1247,
+          "code": "const checkoutId = `CO-${Date.now()}-${room.id}`;"
+        },
+        {
+          "line_num": 1248,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'checkouts', checkoutId), {"
+        },
+        {
+          "line_num": 1249,
+          "code": "...checkoutRecord,"
+        },
+        {
+          "line_num": 1250,
+          "code": "status: 'completed'"
+        },
+        {
+          "line_num": 1251,
+          "code": "});"
+        },
+        {
+          "line_num": 1253,
+          "code": "// STEP 3: Now safe to clear room"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 1457,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'laundryOrders', laundryId), {",
+      "context": [
+        {
+          "line_num": 1452,
+          "code": "})"
+        },
+        {
+          "line_num": 1453,
+          "code": "});"
+        },
+        {
+          "line_num": 1455,
+          "code": "// Log laundry order for tracking"
+        },
+        {
+          "line_num": 1456,
+          "code": "const laundryId = `LAUNDRY-${Date.now()}`;"
+        },
+        {
+          "line_num": 1457,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'laundryOrders', laundryId), {"
+        },
+        {
+          "line_num": 1458,
+          "code": "id: laundryId,"
+        },
+        {
+          "line_num": 1459,
+          "code": "roomId: room.id,"
+        },
+        {
+          "line_num": 1460,
+          "code": "roomNumber: room.number,"
+        },
+        {
+          "line_num": 1461,
+          "code": "guestName: room.guest?.name,"
+        },
+        {
+          "line_num": 1462,
+          "code": "items: laundryCart,"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 1584,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'voids', voidId), { ...voidRecord, synced: true });",
+      "context": [
+        {
+          "line_num": 1579,
+          "code": "// STEP 2: Remove from cart immediately (UI feedback)"
+        },
+        {
+          "line_num": 1580,
+          "code": "setCart(cart.filter(i => i.id !== item.id));"
+        },
+        {
+          "line_num": 1582,
+          "code": "// STEP 3: Try Firestore write"
+        },
+        {
+          "line_num": 1583,
+          "code": "try {"
+        },
+        {
+          "line_num": 1584,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'voids', voidId), { ...voidRecord, synced: true });"
+        },
+        {
+          "line_num": 1585,
+          "code": "// STEP 4: Remove from queue only after successful sync"
+        },
+        {
+          "line_num": 1586,
+          "code": "dequeueVoid(voidId);"
+        },
+        {
+          "line_num": 1587,
+          "code": "} catch (e) {"
+        },
+        {
+          "line_num": 1588,
+          "code": "console.error(\"Void queued offline, will auto-sync:\", e);"
+        },
+        {
+          "line_num": 1589,
+          "code": "// Void remains in queue - useOfflineVoidQueue will auto-retry"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 1636,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sales', txId), { ...txPayload, status: 'confirmed', synced: true });",
+      "context": [
+        {
+          "line_num": 1631,
+          "code": "// STEP 1: Persist to local queue BEFORE anything else (survives crash)"
+        },
+        {
+          "line_num": 1632,
+          "code": "enqueue(txPayload);"
+        },
+        {
+          "line_num": 1634,
+          "code": "try {"
+        },
+        {
+          "line_num": 1635,
+          "code": "// STEP 2: Write to Firestore (idempotent - same txId = same doc)"
+        },
+        {
+          "line_num": 1636,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sales', txId), { ...txPayload, status: 'confirmed', synced: true });"
+        },
+        {
+          "line_num": 1638,
+          "code": "// STEP 3: Only clear cart AFTER Firestore write succeeds"
+        },
+        {
+          "line_num": 1639,
+          "code": "clearCart();"
+        },
+        {
+          "line_num": 1641,
+          "code": "// STEP 4: Secondary writes (stock, room charges, performance updates)"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 1678,
+      "code": "await setDoc(perfDocRef, {",
+      "context": [
+        {
+          "line_num": 1673,
+          "code": "itemsSold: increment(txPayload.itemsCount),"
+        },
+        {
+          "line_num": 1674,
+          "code": "lastUpdated: new Date().toISOString(),"
+        },
+        {
+          "line_num": 1675,
+          "code": "});"
+        },
+        {
+          "line_num": 1676,
+          "code": "} catch {"
+        },
+        {
+          "line_num": 1677,
+          "code": "// Document doesn't exist, create it"
+        },
+        {
+          "line_num": 1678,
+          "code": "await setDoc(perfDocRef, {"
+        },
+        {
+          "line_num": 1679,
+          "code": "staffId: currentUserId,"
+        },
+        {
+          "line_num": 1680,
+          "code": "staffName: staffName,"
+        },
+        {
+          "line_num": 1681,
+          "code": "serviceCenter: department?.id,"
+        },
+        {
+          "line_num": 1682,
+          "code": "month: currentMonth,"
+        },
+        {
+          "line_num": 1683,
+          "code": "totalSales: total,"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 2231,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'expenses', exp.id), { ...exp, synced: true });",
+      "context": [
+        {
+          "line_num": 2227,
+          "code": "useEffect(() => {"
+        },
+        {
+          "line_num": 2228,
+          "code": "const syncPending = async () => {"
+        },
+        {
+          "line_num": 2229,
+          "code": "for (const exp of pendingExpenses) {"
+        },
+        {
+          "line_num": 2230,
+          "code": "try {"
+        },
+        {
+          "line_num": 2231,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'expenses', exp.id), { ...exp, synced: true });"
+        },
+        {
+          "line_num": 2232,
+          "code": "setPendingExpenses(prev => prev.filter(e => e.id !== exp.id));"
+        },
+        {
+          "line_num": 2233,
+          "code": "} catch (e) { break; }"
+        },
+        {
+          "line_num": 2234,
+          "code": "}"
+        },
+        {
+          "line_num": 2235,
+          "code": "};"
+        },
+        {
+          "line_num": 2236,
+          "code": "syncPending();"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 2283,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'expenses', expenseId), { ...expenseData, synced: true });",
+      "context": [
+        {
+          "line_num": 2279,
+          "code": "setPendingExpenses(prev => [...prev, expenseData]);"
+        },
+        {
+          "line_num": 2280,
+          "code": "resetForm();"
+        },
+        {
+          "line_num": 2282,
+          "code": "try {"
+        },
+        {
+          "line_num": 2283,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'expenses', expenseId), { ...expenseData, synced: true });"
+        },
+        {
+          "line_num": 2284,
+          "code": "setPendingExpenses(prev => prev.filter(e => e.id !== expenseId));"
+        },
+        {
+          "line_num": 2285,
+          "code": "} catch (e) {"
+        },
+        {
+          "line_num": 2286,
+          "code": "console.error(\"Expense queued offline:\", e);"
+        },
+        {
+          "line_num": 2287,
+          "code": "alert(\"Expense saved locally. Will sync when online.\");"
+        },
+        {
+          "line_num": 2288,
+          "code": "}"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 3410,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'events', eventId), eventData);",
+      "context": [
+        {
+          "line_num": 3405,
+          "code": "createdBy: staffName || 'Admin',"
+        },
+        {
+          "line_num": 3406,
+          "code": "createdAt: new Date().toISOString()"
+        },
+        {
+          "line_num": 3407,
+          "code": "};"
+        },
+        {
+          "line_num": 3409,
+          "code": "try {"
+        },
+        {
+          "line_num": 3410,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'events', eventId), eventData);"
+        },
+        {
+          "line_num": 3411,
+          "code": "resetForm();"
+        },
+        {
+          "line_num": 3412,
+          "code": "alert('\u2713 Event created successfully!');"
+        },
+        {
+          "line_num": 3413,
+          "code": "} catch (e) {"
+        },
+        {
+          "line_num": 3414,
+          "code": "alert('Failed to save event: ' + e.message);"
+        },
+        {
+          "line_num": 3415,
+          "code": "}"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 3986,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', selectedItem.id), {",
+      "context": [
+        {
+          "line_num": 3981,
+          "code": "const txId = `RCV-${Date.now()}`;"
+        },
+        {
+          "line_num": 3982,
+          "code": "const currentStock = mainStoreStock.find(s => s.id === selectedItem.id);"
+        },
+        {
+          "line_num": 3983,
+          "code": "const newQty = (currentStock?.quantity || 0) + parseInt(quantity);"
+        },
+        {
+          "line_num": 3985,
+          "code": "try {"
+        },
+        {
+          "line_num": 3986,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', selectedItem.id), {"
+        },
+        {
+          "line_num": 3987,
+          "code": "itemId: selectedItem.id,"
+        },
+        {
+          "line_num": 3988,
+          "code": "itemName: selectedItem.name,"
+        },
+        {
+          "line_num": 3989,
+          "code": "category: selectedItem.category,"
+        },
+        {
+          "line_num": 3990,
+          "code": "type: selectedItem.type || 'stock',"
+        },
+        {
+          "line_num": 3991,
+          "code": "quantity: newQty,"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 3997,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {",
+      "context": [
+        {
+          "line_num": 3992,
+          "code": "unit: selectedItem.unit || 'pcs',"
+        },
+        {
+          "line_num": 3993,
+          "code": "lastUpdated: new Date().toISOString(),"
+        },
+        {
+          "line_num": 3994,
+          "code": "minThreshold: 10,"
+        },
+        {
+          "line_num": 3995,
+          "code": "});"
+        },
+        {
+          "line_num": 3997,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {"
+        },
+        {
+          "line_num": 3998,
+          "code": "id: txId,"
+        },
+        {
+          "line_num": 3999,
+          "code": "type: 'receive',"
+        },
+        {
+          "line_num": 4000,
+          "code": "itemId: selectedItem.id,"
+        },
+        {
+          "line_num": 4001,
+          "code": "itemName: selectedItem.name,"
+        },
+        {
+          "line_num": 4002,
+          "code": "quantity: parseInt(quantity),"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 4042,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', selectedCenter, 'items', selectedItem.id), {",
+      "context": [
+        {
+          "line_num": 4037,
+          "code": "});"
+        },
+        {
+          "line_num": 4039,
+          "code": "// Increase service center"
+        },
+        {
+          "line_num": 4040,
+          "code": "const centerStock = serviceCenterStock.find(s => s.id === selectedItem.id);"
+        },
+        {
+          "line_num": 4041,
+          "code": "const newCenterQty = (centerStock?.quantity || 0) + issueQty;"
+        },
+        {
+          "line_num": 4042,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', selectedCenter, 'items', selectedItem.id), {"
+        },
+        {
+          "line_num": 4043,
+          "code": "itemId: selectedItem.id,"
+        },
+        {
+          "line_num": 4044,
+          "code": "itemName: selectedItem.itemName || selectedItem.name || 'Unknown Item',"
+        },
+        {
+          "line_num": 4045,
+          "code": "category: selectedItem.category || 'Uncategorized',"
+        },
+        {
+          "line_num": 4046,
+          "code": "quantity: newCenterQty,"
+        },
+        {
+          "line_num": 4047,
+          "code": "lastReceived: new Date().toISOString(),"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 4052,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {",
+      "context": [
+        {
+          "line_num": 4047,
+          "code": "lastReceived: new Date().toISOString(),"
+        },
+        {
+          "line_num": 4048,
+          "code": "receivedBy: staffName,"
+        },
+        {
+          "line_num": 4049,
+          "code": "});"
+        },
+        {
+          "line_num": 4051,
+          "code": "// Log transaction"
+        },
+        {
+          "line_num": 4052,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {"
+        },
+        {
+          "line_num": 4053,
+          "code": "id: txId,"
+        },
+        {
+          "line_num": 4054,
+          "code": "type: 'issue',"
+        },
+        {
+          "line_num": 4055,
+          "code": "itemId: selectedItem.id,"
+        },
+        {
+          "line_num": 4056,
+          "code": "itemName: selectedItem.itemName || selectedItem.name || 'Unknown Item',"
+        },
+        {
+          "line_num": 4057,
+          "code": "quantity: issueQty,"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 4375,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), reqData);",
+      "context": [
+        {
+          "line_num": 4370,
+          "code": "createdAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 4371,
+          "code": "updatedAt: new Date().toISOString(),"
+        },
+        {
+          "line_num": 4372,
+          "code": "};"
+        },
+        {
+          "line_num": 4374,
+          "code": "try {"
+        },
+        {
+          "line_num": 4375,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), reqData);"
+        },
+        {
+          "line_num": 4376,
+          "code": "alert('\u2713 Requisition submitted');"
+        },
+        {
+          "line_num": 4377,
+          "code": "setShowNewReq(false);"
+        },
+        {
+          "line_num": 4378,
+          "code": "setReqItems([]);"
+        },
+        {
+          "line_num": 4379,
+          "code": "setNotes('');"
+        },
+        {
+          "line_num": 4380,
+          "code": "} catch (e) {"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 4438,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', req.serviceCenter, 'items', item.itemId), {",
+      "context": [
+        {
+          "line_num": 4433,
+          "code": "});"
+        },
+        {
+          "line_num": 4435,
+          "code": "// Increase service center"
+        },
+        {
+          "line_num": 4436,
+          "code": "const centerDoc = await getDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', req.serviceCenter, 'items', item.itemId));"
+        },
+        {
+          "line_num": 4437,
+          "code": "const currentQty = centerDoc.exists() ? centerDoc.data().quantity : 0;"
+        },
+        {
+          "line_num": 4438,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', req.serviceCenter, 'items', item.itemId), {"
+        },
+        {
+          "line_num": 4439,
+          "code": "itemId: item.itemId,"
+        },
+        {
+          "line_num": 4440,
+          "code": "itemName: item.itemName || 'Unknown Item',"
+        },
+        {
+          "line_num": 4441,
+          "code": "quantity: currentQty + item.quantity,"
+        },
+        {
+          "line_num": 4442,
+          "code": "lastReceived: new Date().toISOString(),"
+        },
+        {
+          "line_num": 4443,
+          "code": "receivedBy: staffName,"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 4448,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {",
+      "context": [
+        {
+          "line_num": 4443,
+          "code": "receivedBy: staffName,"
+        },
+        {
+          "line_num": 4444,
+          "code": "});"
+        },
+        {
+          "line_num": 4446,
+          "code": "// Log transaction"
+        },
+        {
+          "line_num": 4447,
+          "code": "const txId = `ISS-REQ-${Date.now()}-${item.itemId}`;"
+        },
+        {
+          "line_num": 4448,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {"
+        },
+        {
+          "line_num": 4449,
+          "code": "id: txId,"
+        },
+        {
+          "line_num": 4450,
+          "code": "type: 'issue',"
+        },
+        {
+          "line_num": 4451,
+          "code": "itemId: item.itemId,"
+        },
+        {
+          "line_num": 4452,
+          "code": "itemName: item.itemName || 'Unknown Item',"
+        },
+        {
+          "line_num": 4453,
+          "code": "quantity: item.quantity,"
+        }
+      ]
+    },
+    {
+      "file": "src\\App.js",
+      "line": 4675,
+      "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'salesTargets', targetId), {",
+      "context": [
+        {
+          "line_num": 4670,
+          "code": "// Set sales target"
+        },
+        {
+          "line_num": 4671,
+          "code": "const handleSetTarget = async () => {"
+        },
+        {
+          "line_num": 4672,
+          "code": "if (!targetStaff || !targetAmount) return;"
+        },
+        {
+          "line_num": 4673,
+          "code": "const targetId = `${targetStaff}_${selectedMonth}`;"
+        },
+        {
+          "line_num": 4674,
+          "code": "try {"
+        },
+        {
+          "line_num": 4675,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'salesTargets', targetId), {"
+        },
+        {
+          "line_num": 4676,
+          "code": "staffId: targetStaff,"
+        },
+        {
+          "line_num": 4677,
+          "code": "staffName: STAFF_SEEDS.find(s => s.email === targetStaff)?.name || targetStaff,"
+        },
+        {
+          "line_num": 4678,
+          "code": "month: selectedMonth,"
+        },
+        {
+          "line_num": 4679,
+          "code": "target: parseInt(targetAmount),"
+        },
+        {
+          "line_num": 4680,
+          "code": "setBy: staffName,"
+        }
+      ]
+    }
+  ],
+  "batch_operations": [],
+  "transaction_operations": [],
+  "files_analyzed": [
+    "src\\App.js",
+    "src\\index.js"
+  ],
+  "summary": {
+    "total_files_analyzed": 2,
+    "total_collections": 0,
+    "collections_list": [],
+    "total_write_operations": 0,
+    "total_set_operations": 33,
+    "total_update_operations": 22,
+    "total_delete_operations": 2,
+    "total_batch_operations": 0,
+    "total_transaction_operations": 0,
+    "all_operations_count": 57
+  },
+  "collection_usage": {},
+  "categorized_operations": {
+    "bar_operations": {
+      "count": 5,
+      "operations": [
+        {
+          "file": "src\\App.js",
+          "line": 881,
+          "code": "if (snap.empty) { INITIAL_MENU.forEach(m => setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', m.id), m)); setMenuItems(INITIAL_MENU); }",
+          "context": [
+            {
+              "line_num": 876,
+              "code": "const unsubRooms = onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'rooms'), (snap) => {"
+            },
+            {
+              "line_num": 877,
+              "code": "if (snap.empty) { INITIAL_ROOMS.forEach(r => setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', r.id), r)); setRooms(INITIAL_ROOMS); }"
+            },
+            {
+              "line_num": 878,
+              "code": "else { setRooms(snap.docs.map(d => ({id: d.id, ...d.data()})).sort((a,b) => { const numA = parseInt(a.number.replace(/\\D/g,'')) || 0; const numB = parseInt(b.number.replace(/\\D/g,'')) || 0; return numA - numB; })); }"
+            },
+            {
+              "line_num": 879,
+              "code": "}, () => setRooms(INITIAL_ROOMS));"
+            },
+            {
+              "line_num": 880,
+              "code": "const unsubMenu = onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'menuItems'), (snap) => {"
+            },
+            {
+              "line_num": 881,
+              "code": "if (snap.empty) { INITIAL_MENU.forEach(m => setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', m.id), m)); setMenuItems(INITIAL_MENU); }"
+            },
+            {
+              "line_num": 882,
+              "code": "else { setMenuItems(snap.docs.map(d => ({id: d.id, ...d.data()}))); }"
+            },
+            {
+              "line_num": 883,
+              "code": "}, () => setMenuItems(INITIAL_MENU));"
+            },
+            {
+              "line_num": 884,
+              "code": "return () => { unsubRooms(); unsubMenu(); };"
+            },
+            {
+              "line_num": 885,
+              "code": "}, [user, appUser, rooms.length]);"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 1457,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'laundryOrders', laundryId), {",
+          "context": [
+            {
+              "line_num": 1452,
+              "code": "})"
+            },
+            {
+              "line_num": 1453,
+              "code": "});"
+            },
+            {
+              "line_num": 1455,
+              "code": "// Log laundry order for tracking"
+            },
+            {
+              "line_num": 1456,
+              "code": "const laundryId = `LAUNDRY-${Date.now()}`;"
+            },
+            {
+              "line_num": 1457,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'laundryOrders', laundryId), {"
+            },
+            {
+              "line_num": 1458,
+              "code": "id: laundryId,"
+            },
+            {
+              "line_num": 1459,
+              "code": "roomId: room.id,"
+            },
+            {
+              "line_num": 1460,
+              "code": "roomNumber: room.number,"
+            },
+            {
+              "line_num": 1461,
+              "code": "guestName: room.guest?.name,"
+            },
+            {
+              "line_num": 1462,
+              "code": "items: laundryCart,"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 1644,
+          "code": "if (item.type === 'bar') await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', item.id), { stock_sold: increment(item.qty) });",
+          "context": [
+            {
+              "line_num": 1639,
+              "code": "clearCart();"
+            },
+            {
+              "line_num": 1641,
+              "code": "// STEP 4: Secondary writes (stock, room charges, performance updates)"
+            },
+            {
+              "line_num": 1642,
+              "code": "try {"
+            },
+            {
+              "line_num": 1643,
+              "code": "for (const item of txPayload.items) {"
+            },
+            {
+              "line_num": 1644,
+              "code": "if (item.type === 'bar') await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', item.id), { stock_sold: increment(item.qty) });"
+            },
+            {
+              "line_num": 1645,
+              "code": "}"
+            },
+            {
+              "line_num": 1646,
+              "code": "if (method === 'room' && roomId) {"
+            },
+            {
+              "line_num": 1647,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', roomId), { \"guest.charges\": arrayUnion({ description: `POS: ${txPayload.items.map(i => i.name).join(', ')}`, amount: total, date: txPayload.date, staff: staffName }) });"
+            },
+            {
+              "line_num": 1648,
+              "code": "}"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 1647,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', roomId), { \"guest.charges\": arrayUnion({ description: `POS: ${txPayload.items.map(i => i.name).join(', ')}`, amount: total, date: txPayload.date, staff: staffName }) });",
+          "context": [
+            {
+              "line_num": 1642,
+              "code": "try {"
+            },
+            {
+              "line_num": 1643,
+              "code": "for (const item of txPayload.items) {"
+            },
+            {
+              "line_num": 1644,
+              "code": "if (item.type === 'bar') await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', item.id), { stock_sold: increment(item.qty) });"
+            },
+            {
+              "line_num": 1645,
+              "code": "}"
+            },
+            {
+              "line_num": 1646,
+              "code": "if (method === 'room' && roomId) {"
+            },
+            {
+              "line_num": 1647,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', roomId), { \"guest.charges\": arrayUnion({ description: `POS: ${txPayload.items.map(i => i.name).join(', ')}`, amount: total, date: txPayload.date, staff: staffName }) });"
+            },
+            {
+              "line_num": 1648,
+              "code": "}"
+            },
+            {
+              "line_num": 1650,
+              "code": "// STEP 4b: Update staff shift metrics"
+            },
+            {
+              "line_num": 1651,
+              "code": "const currentUserId = auth.currentUser?.uid;"
+            },
+            {
+              "line_num": 1652,
+              "code": "if (currentUserId) {"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 2049,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', itemId), { [field]: numVal });",
+          "context": [
+            {
+              "line_num": 2044,
+              "code": "setLocalEdits(prev => ({ ...prev, [key]: numVal }));"
+            },
+            {
+              "line_num": 2046,
+              "code": "if (debounceTimers.current[key]) clearTimeout(debounceTimers.current[key]);"
+            },
+            {
+              "line_num": 2047,
+              "code": "debounceTimers.current[key] = setTimeout(async () => {"
+            },
+            {
+              "line_num": 2048,
+              "code": "try {"
+            },
+            {
+              "line_num": 2049,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', itemId), { [field]: numVal });"
+            },
+            {
+              "line_num": 2050,
+              "code": "setLocalEdits(prev => { const next = {...prev}; delete next[key]; return next; });"
+            },
+            {
+              "line_num": 2051,
+              "code": "} catch (e) {"
+            },
+            {
+              "line_num": 2052,
+              "code": "console.error(\"Stock update failed:\", e);"
+            },
+            {
+              "line_num": 2053,
+              "code": "alert(`Failed to save ${field} for item. Will retry.`);"
+            },
+            {
+              "line_num": 2054,
+              "code": "}"
+            }
+          ]
+        }
+      ]
+    },
+    "room_operations": {
+      "count": 6,
+      "operations": [
+        {
+          "file": "src\\App.js",
+          "line": 877,
+          "code": "if (snap.empty) { INITIAL_ROOMS.forEach(r => setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', r.id), r)); setRooms(INITIAL_ROOMS); }",
+          "context": [
+            {
+              "line_num": 872,
+              "code": "setRooms(INITIAL_ROOMS);"
+            },
+            {
+              "line_num": 873,
+              "code": "setMenuItems(INITIAL_MENU);"
+            },
+            {
+              "line_num": 874,
+              "code": "}"
+            },
+            {
+              "line_num": 875,
+              "code": "if (!user || !appUser) return;"
+            },
+            {
+              "line_num": 876,
+              "code": "const unsubRooms = onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'rooms'), (snap) => {"
+            },
+            {
+              "line_num": 877,
+              "code": "if (snap.empty) { INITIAL_ROOMS.forEach(r => setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', r.id), r)); setRooms(INITIAL_ROOMS); }"
+            },
+            {
+              "line_num": 878,
+              "code": "else { setRooms(snap.docs.map(d => ({id: d.id, ...d.data()})).sort((a,b) => { const numA = parseInt(a.number.replace(/\\D/g,'')) || 0; const numB = parseInt(b.number.replace(/\\D/g,'')) || 0; return numA - numB; })); }"
+            },
+            {
+              "line_num": 879,
+              "code": "}, () => setRooms(INITIAL_ROOMS));"
+            },
+            {
+              "line_num": 880,
+              "code": "const unsubMenu = onSnapshot(collection(db, 'artifacts', appId, 'public', 'data', 'menuItems'), (snap) => {"
+            },
+            {
+              "line_num": 881,
+              "code": "if (snap.empty) { INITIAL_MENU.forEach(m => setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'menuItems', m.id), m)); setMenuItems(INITIAL_MENU); }"
+            },
+            {
+              "line_num": 882,
+              "code": "else { setMenuItems(snap.docs.map(d => ({id: d.id, ...d.data()}))); }"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 1248,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'checkouts', checkoutId), {",
+          "context": [
+            {
+              "line_num": 1243,
+              "code": "localStorage.setItem(archiveKey, JSON.stringify(checkoutRecord));"
+            },
+            {
+              "line_num": 1245,
+              "code": "try {"
+            },
+            {
+              "line_num": 1246,
+              "code": "// STEP 2: Also write checkout record to Firestore for permanent audit"
+            },
+            {
+              "line_num": 1247,
+              "code": "const checkoutId = `CO-${Date.now()}-${room.id}`;"
+            },
+            {
+              "line_num": 1248,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'checkouts', checkoutId), {"
+            },
+            {
+              "line_num": 1249,
+              "code": "...checkoutRecord,"
+            },
+            {
+              "line_num": 1250,
+              "code": "status: 'completed'"
+            },
+            {
+              "line_num": 1251,
+              "code": "});"
+            },
+            {
+              "line_num": 1253,
+              "code": "// STEP 3: Now safe to clear room"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 1215,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', selectedRoom.id), {",
+          "context": [
+            {
+              "line_num": 1210,
+              "code": "const pendingKey = `pending_checkin_${selectedRoom.id}`;"
+            },
+            {
+              "line_num": 1211,
+              "code": "localStorage.setItem(pendingKey, JSON.stringify(checkInData));"
+            },
+            {
+              "line_num": 1213,
+              "code": "try {"
+            },
+            {
+              "line_num": 1214,
+              "code": "// STEP 2: Write to Firestore"
+            },
+            {
+              "line_num": 1215,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', selectedRoom.id), {"
+            },
+            {
+              "line_num": 1216,
+              "code": "status: checkInData.status,"
+            },
+            {
+              "line_num": 1217,
+              "code": "guest: checkInData.guest"
+            },
+            {
+              "line_num": 1218,
+              "code": "});"
+            },
+            {
+              "line_num": 1220,
+              "code": "// STEP 3: Clear pending only after success"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 1254,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', room.id), { status: 'dirty', guest: null });",
+          "context": [
+            {
+              "line_num": 1249,
+              "code": "...checkoutRecord,"
+            },
+            {
+              "line_num": 1250,
+              "code": "status: 'completed'"
+            },
+            {
+              "line_num": 1251,
+              "code": "});"
+            },
+            {
+              "line_num": 1253,
+              "code": "// STEP 3: Now safe to clear room"
+            },
+            {
+              "line_num": 1254,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', room.id), { status: 'dirty', guest: null });"
+            },
+            {
+              "line_num": 1256,
+              "code": "// STEP 4: Clear local archive only after both writes succeed"
+            },
+            {
+              "line_num": 1257,
+              "code": "localStorage.removeItem(archiveKey);"
+            },
+            {
+              "line_num": 1259,
+              "code": "alert(`\u2713 Checked out from ${room.number}`); setSelectedRoom(null);"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 1267,
+          "code": "try { await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', room.id), { status: 'clean' }); alert(`\u2713 ${room.number} marked clean`); setSelectedRoom(null); } catch (e) { alert(\"Failed: \" + e.message); }",
+          "context": [
+            {
+              "line_num": 1262,
+              "code": "alert(\"Check-out failed (guest data preserved locally): \" + e.message);"
+            },
+            {
+              "line_num": 1263,
+              "code": "}"
+            },
+            {
+              "line_num": 1264,
+              "code": "};"
+            },
+            {
+              "line_num": 1266,
+              "code": "const handleMarkClean = async (room) => {"
+            },
+            {
+              "line_num": 1267,
+              "code": "try { await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', room.id), { status: 'clean' }); alert(`\u2713 ${room.number} marked clean`); setSelectedRoom(null); } catch (e) { alert(\"Failed: \" + e.message); }"
+            },
+            {
+              "line_num": 1268,
+              "code": "};"
+            },
+            {
+              "line_num": 1270,
+              "code": "const getStatusColor = (status) => ({ occupied: 'bg-red-500', dirty: 'bg-amber-500' }[status] || 'bg-emerald-500');"
+            },
+            {
+              "line_num": 1271,
+              "code": "const stats = { total: rooms.length, occupied: rooms.filter(r => r.status === 'occupied').length, available: rooms.filter(r => r.status === 'clean').length, dirty: rooms.filter(r => r.status === 'dirty').length };"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 1444,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', room.id), {",
+          "context": [
+            {
+              "line_num": 1439,
+              "code": "setIsSubmitting(true);"
+            },
+            {
+              "line_num": 1441,
+              "code": "try {"
+            },
+            {
+              "line_num": 1442,
+              "code": "// Add laundry charges to room"
+            },
+            {
+              "line_num": 1443,
+              "code": "const chargeDescription = `Laundry: ${laundryCart.map(i => `${i.qty}x ${i.name}`).join(', ')}`;"
+            },
+            {
+              "line_num": 1444,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'rooms', room.id), {"
+            },
+            {
+              "line_num": 1445,
+              "code": "\"guest.charges\": arrayUnion({"
+            },
+            {
+              "line_num": 1446,
+              "code": "description: chargeDescription,"
+            },
+            {
+              "line_num": 1447,
+              "code": "amount: total,"
+            },
+            {
+              "line_num": 1448,
+              "code": "date: new Date().toISOString(),"
+            },
+            {
+              "line_num": 1449,
+              "code": "type: 'laundry',"
+            }
+          ]
+        }
+      ]
+    },
+    "stock_operations": {
+      "count": 14,
+      "operations": [
+        {
+          "file": "src\\App.js",
+          "line": 524,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', item.id), {",
+          "context": [
+            {
+              "line_num": 519,
+              "code": "const txId = `RCV-${Date.now()}`;"
+            },
+            {
+              "line_num": 520,
+              "code": "const itemDoc = mainStoreStock.find(s => s.itemId === item.id);"
+            },
+            {
+              "line_num": 521,
+              "code": "const newQty = (itemDoc?.quantity || 0) + quantity;"
+            },
+            {
+              "line_num": 523,
+              "code": "// Update stock level"
+            },
+            {
+              "line_num": 524,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', item.id), {"
+            },
+            {
+              "line_num": 525,
+              "code": "itemId: item.id,"
+            },
+            {
+              "line_num": 526,
+              "code": "itemName: item.name,"
+            },
+            {
+              "line_num": 527,
+              "code": "category: item.category,"
+            },
+            {
+              "line_num": 528,
+              "code": "type: item.type,"
+            },
+            {
+              "line_num": 529,
+              "code": "quantity: newQty,"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 536,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {",
+          "context": [
+            {
+              "line_num": 531,
+              "code": "lastUpdated: new Date().toISOString(),"
+            },
+            {
+              "line_num": 532,
+              "code": "minThreshold: item.minThreshold || 10,"
+            },
+            {
+              "line_num": 533,
+              "code": "});"
+            },
+            {
+              "line_num": 535,
+              "code": "// Log the receipt transaction"
+            },
+            {
+              "line_num": 536,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {"
+            },
+            {
+              "line_num": 537,
+              "code": "id: txId,"
+            },
+            {
+              "line_num": 538,
+              "code": "type: 'receive',"
+            },
+            {
+              "line_num": 539,
+              "code": "itemId: item.id,"
+            },
+            {
+              "line_num": 540,
+              "code": "itemName: item.name,"
+            },
+            {
+              "line_num": 541,
+              "code": "quantity,"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 565,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {",
+          "context": [
+            {
+              "line_num": 560,
+              "code": "quantity: increment(-quantity),"
+            },
+            {
+              "line_num": 561,
+              "code": "lastUpdated: new Date().toISOString(),"
+            },
+            {
+              "line_num": 562,
+              "code": "});"
+            },
+            {
+              "line_num": 564,
+              "code": "// Log the issue transaction"
+            },
+            {
+              "line_num": 565,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {"
+            },
+            {
+              "line_num": 566,
+              "code": "id: txId,"
+            },
+            {
+              "line_num": 567,
+              "code": "type: 'issue',"
+            },
+            {
+              "line_num": 568,
+              "code": "itemId: item.id,"
+            },
+            {
+              "line_num": 569,
+              "code": "itemName: item.itemName || item.name,"
+            },
+            {
+              "line_num": 570,
+              "code": "quantity,"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 603,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', centerId, 'items', item.id), {",
+          "context": [
+            {
+              "line_num": 599,
+              "code": "const receiveFromMainStore = async (item, quantity, receivedBy) => {"
+            },
+            {
+              "line_num": 600,
+              "code": "const itemDoc = centerStock.find(s => s.itemId === item.id);"
+            },
+            {
+              "line_num": 601,
+              "code": "const newQty = (itemDoc?.quantity || 0) + quantity;"
+            },
+            {
+              "line_num": 603,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', centerId, 'items', item.id), {"
+            },
+            {
+              "line_num": 604,
+              "code": "itemId: item.id,"
+            },
+            {
+              "line_num": 605,
+              "code": "itemName: item.name,"
+            },
+            {
+              "line_num": 606,
+              "code": "category: item.category,"
+            },
+            {
+              "line_num": 607,
+              "code": "quantity: newQty,"
+            },
+            {
+              "line_num": 608,
+              "code": "lastReceived: new Date().toISOString(),"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 3986,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', selectedItem.id), {",
+          "context": [
+            {
+              "line_num": 3981,
+              "code": "const txId = `RCV-${Date.now()}`;"
+            },
+            {
+              "line_num": 3982,
+              "code": "const currentStock = mainStoreStock.find(s => s.id === selectedItem.id);"
+            },
+            {
+              "line_num": 3983,
+              "code": "const newQty = (currentStock?.quantity || 0) + parseInt(quantity);"
+            },
+            {
+              "line_num": 3985,
+              "code": "try {"
+            },
+            {
+              "line_num": 3986,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', selectedItem.id), {"
+            },
+            {
+              "line_num": 3987,
+              "code": "itemId: selectedItem.id,"
+            },
+            {
+              "line_num": 3988,
+              "code": "itemName: selectedItem.name,"
+            },
+            {
+              "line_num": 3989,
+              "code": "category: selectedItem.category,"
+            },
+            {
+              "line_num": 3990,
+              "code": "type: selectedItem.type || 'stock',"
+            },
+            {
+              "line_num": 3991,
+              "code": "quantity: newQty,"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 3997,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {",
+          "context": [
+            {
+              "line_num": 3992,
+              "code": "unit: selectedItem.unit || 'pcs',"
+            },
+            {
+              "line_num": 3993,
+              "code": "lastUpdated: new Date().toISOString(),"
+            },
+            {
+              "line_num": 3994,
+              "code": "minThreshold: 10,"
+            },
+            {
+              "line_num": 3995,
+              "code": "});"
+            },
+            {
+              "line_num": 3997,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {"
+            },
+            {
+              "line_num": 3998,
+              "code": "id: txId,"
+            },
+            {
+              "line_num": 3999,
+              "code": "type: 'receive',"
+            },
+            {
+              "line_num": 4000,
+              "code": "itemId: selectedItem.id,"
+            },
+            {
+              "line_num": 4001,
+              "code": "itemName: selectedItem.name,"
+            },
+            {
+              "line_num": 4002,
+              "code": "quantity: parseInt(quantity),"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 4042,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', selectedCenter, 'items', selectedItem.id), {",
+          "context": [
+            {
+              "line_num": 4037,
+              "code": "});"
+            },
+            {
+              "line_num": 4039,
+              "code": "// Increase service center"
+            },
+            {
+              "line_num": 4040,
+              "code": "const centerStock = serviceCenterStock.find(s => s.id === selectedItem.id);"
+            },
+            {
+              "line_num": 4041,
+              "code": "const newCenterQty = (centerStock?.quantity || 0) + issueQty;"
+            },
+            {
+              "line_num": 4042,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', selectedCenter, 'items', selectedItem.id), {"
+            },
+            {
+              "line_num": 4043,
+              "code": "itemId: selectedItem.id,"
+            },
+            {
+              "line_num": 4044,
+              "code": "itemName: selectedItem.itemName || selectedItem.name || 'Unknown Item',"
+            },
+            {
+              "line_num": 4045,
+              "code": "category: selectedItem.category || 'Uncategorized',"
+            },
+            {
+              "line_num": 4046,
+              "code": "quantity: newCenterQty,"
+            },
+            {
+              "line_num": 4047,
+              "code": "lastReceived: new Date().toISOString(),"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 4052,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {",
+          "context": [
+            {
+              "line_num": 4047,
+              "code": "lastReceived: new Date().toISOString(),"
+            },
+            {
+              "line_num": 4048,
+              "code": "receivedBy: staffName,"
+            },
+            {
+              "line_num": 4049,
+              "code": "});"
+            },
+            {
+              "line_num": 4051,
+              "code": "// Log transaction"
+            },
+            {
+              "line_num": 4052,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {"
+            },
+            {
+              "line_num": 4053,
+              "code": "id: txId,"
+            },
+            {
+              "line_num": 4054,
+              "code": "type: 'issue',"
+            },
+            {
+              "line_num": 4055,
+              "code": "itemId: selectedItem.id,"
+            },
+            {
+              "line_num": 4056,
+              "code": "itemName: selectedItem.itemName || selectedItem.name || 'Unknown Item',"
+            },
+            {
+              "line_num": 4057,
+              "code": "quantity: issueQty,"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 4438,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', req.serviceCenter, 'items', item.itemId), {",
+          "context": [
+            {
+              "line_num": 4433,
+              "code": "});"
+            },
+            {
+              "line_num": 4435,
+              "code": "// Increase service center"
+            },
+            {
+              "line_num": 4436,
+              "code": "const centerDoc = await getDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', req.serviceCenter, 'items', item.itemId));"
+            },
+            {
+              "line_num": 4437,
+              "code": "const currentQty = centerDoc.exists() ? centerDoc.data().quantity : 0;"
+            },
+            {
+              "line_num": 4438,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', req.serviceCenter, 'items', item.itemId), {"
+            },
+            {
+              "line_num": 4439,
+              "code": "itemId: item.itemId,"
+            },
+            {
+              "line_num": 4440,
+              "code": "itemName: item.itemName || 'Unknown Item',"
+            },
+            {
+              "line_num": 4441,
+              "code": "quantity: currentQty + item.quantity,"
+            },
+            {
+              "line_num": 4442,
+              "code": "lastReceived: new Date().toISOString(),"
+            },
+            {
+              "line_num": 4443,
+              "code": "receivedBy: staffName,"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 4448,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {",
+          "context": [
+            {
+              "line_num": 4443,
+              "code": "receivedBy: staffName,"
+            },
+            {
+              "line_num": 4444,
+              "code": "});"
+            },
+            {
+              "line_num": 4446,
+              "code": "// Log transaction"
+            },
+            {
+              "line_num": 4447,
+              "code": "const txId = `ISS-REQ-${Date.now()}-${item.itemId}`;"
+            },
+            {
+              "line_num": 4448,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'stockTransactions', txId), {"
+            },
+            {
+              "line_num": 4449,
+              "code": "id: txId,"
+            },
+            {
+              "line_num": 4450,
+              "code": "type: 'issue',"
+            },
+            {
+              "line_num": 4451,
+              "code": "itemId: item.itemId,"
+            },
+            {
+              "line_num": 4452,
+              "code": "itemName: item.itemName || 'Unknown Item',"
+            },
+            {
+              "line_num": 4453,
+              "code": "quantity: item.quantity,"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 559,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', item.id), {",
+          "context": [
+            {
+              "line_num": 554,
+              "code": "const currentQty = itemDoc?.quantity || 0;"
+            },
+            {
+              "line_num": 556,
+              "code": "if (currentQty < quantity) throw new Error('Insufficient stock in main store');"
+            },
+            {
+              "line_num": 558,
+              "code": "// Decrease main store"
+            },
+            {
+              "line_num": 559,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', item.id), {"
+            },
+            {
+              "line_num": 560,
+              "code": "quantity: increment(-quantity),"
+            },
+            {
+              "line_num": 561,
+              "code": "lastUpdated: new Date().toISOString(),"
+            },
+            {
+              "line_num": 562,
+              "code": "});"
+            },
+            {
+              "line_num": 564,
+              "code": "// Log the issue transaction"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 614,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', centerId, 'items', itemId), {",
+          "context": [
+            {
+              "line_num": 609,
+              "code": "receivedBy,"
+            },
+            {
+              "line_num": 610,
+              "code": "});"
+            },
+            {
+              "line_num": 611,
+              "code": "};"
+            },
+            {
+              "line_num": 613,
+              "code": "const recordSale = async (itemId, quantity) => {"
+            },
+            {
+              "line_num": 614,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'serviceCenterStock', centerId, 'items', itemId), {"
+            },
+            {
+              "line_num": 615,
+              "code": "quantity: increment(-quantity),"
+            },
+            {
+              "line_num": 616,
+              "code": "lastSold: new Date().toISOString(),"
+            },
+            {
+              "line_num": 617,
+              "code": "});"
+            },
+            {
+              "line_num": 618,
+              "code": "};"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 4034,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', selectedItem.id), {",
+          "context": [
+            {
+              "line_num": 4029,
+              "code": "}"
+            },
+            {
+              "line_num": 4031,
+              "code": "const txId = `ISS-${Date.now()}`;"
+            },
+            {
+              "line_num": 4032,
+              "code": "try {"
+            },
+            {
+              "line_num": 4033,
+              "code": "// Decrease main store"
+            },
+            {
+              "line_num": 4034,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', selectedItem.id), {"
+            },
+            {
+              "line_num": 4035,
+              "code": "quantity: increment(-issueQty),"
+            },
+            {
+              "line_num": 4036,
+              "code": "lastUpdated: new Date().toISOString(),"
+            },
+            {
+              "line_num": 4037,
+              "code": "});"
+            },
+            {
+              "line_num": 4039,
+              "code": "// Increase service center"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 4430,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', item.itemId), {",
+          "context": [
+            {
+              "line_num": 4425,
+              "code": "alert(`Insufficient stock for ${item.itemName}`);"
+            },
+            {
+              "line_num": 4426,
+              "code": "return;"
+            },
+            {
+              "line_num": 4427,
+              "code": "}"
+            },
+            {
+              "line_num": 4429,
+              "code": "// Decrease main store"
+            },
+            {
+              "line_num": 4430,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'mainStoreStock', item.itemId), {"
+            },
+            {
+              "line_num": 4431,
+              "code": "quantity: increment(-item.quantity),"
+            },
+            {
+              "line_num": 4432,
+              "code": "lastUpdated: new Date().toISOString(),"
+            },
+            {
+              "line_num": 4433,
+              "code": "});"
+            },
+            {
+              "line_num": 4435,
+              "code": "// Increase service center"
+            }
+          ]
+        }
+      ]
+    },
+    "expense_operations": {
+      "count": 2,
+      "operations": [
+        {
+          "file": "src\\App.js",
+          "line": 2231,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'expenses', exp.id), { ...exp, synced: true });",
+          "context": [
+            {
+              "line_num": 2227,
+              "code": "useEffect(() => {"
+            },
+            {
+              "line_num": 2228,
+              "code": "const syncPending = async () => {"
+            },
+            {
+              "line_num": 2229,
+              "code": "for (const exp of pendingExpenses) {"
+            },
+            {
+              "line_num": 2230,
+              "code": "try {"
+            },
+            {
+              "line_num": 2231,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'expenses', exp.id), { ...exp, synced: true });"
+            },
+            {
+              "line_num": 2232,
+              "code": "setPendingExpenses(prev => prev.filter(e => e.id !== exp.id));"
+            },
+            {
+              "line_num": 2233,
+              "code": "} catch (e) { break; }"
+            },
+            {
+              "line_num": 2234,
+              "code": "}"
+            },
+            {
+              "line_num": 2235,
+              "code": "};"
+            },
+            {
+              "line_num": 2236,
+              "code": "syncPending();"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 2283,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'expenses', expenseId), { ...expenseData, synced: true });",
+          "context": [
+            {
+              "line_num": 2279,
+              "code": "setPendingExpenses(prev => [...prev, expenseData]);"
+            },
+            {
+              "line_num": 2280,
+              "code": "resetForm();"
+            },
+            {
+              "line_num": 2282,
+              "code": "try {"
+            },
+            {
+              "line_num": 2283,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'expenses', expenseId), { ...expenseData, synced: true });"
+            },
+            {
+              "line_num": 2284,
+              "code": "setPendingExpenses(prev => prev.filter(e => e.id !== expenseId));"
+            },
+            {
+              "line_num": 2285,
+              "code": "} catch (e) {"
+            },
+            {
+              "line_num": 2286,
+              "code": "console.error(\"Expense queued offline:\", e);"
+            },
+            {
+              "line_num": 2287,
+              "code": "alert(\"Expense saved locally. Will sync when online.\");"
+            },
+            {
+              "line_num": 2288,
+              "code": "}"
+            }
+          ]
+        }
+      ]
+    },
+    "shift_operations": {
+      "count": 7,
+      "operations": [
+        {
+          "file": "src\\App.js",
+          "line": 400,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'workPeriods', 'current'), {",
+          "context": [
+            {
+              "line_num": 395,
+              "code": "}, []);"
+            },
+            {
+              "line_num": 397,
+              "code": "const openWorkPeriod = async (staffName) => {"
+            },
+            {
+              "line_num": 398,
+              "code": "const now = new Date().toISOString();"
+            },
+            {
+              "line_num": 399,
+              "code": "const periodId = `WP-${Date.now()}`;"
+            },
+            {
+              "line_num": 400,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'workPeriods', 'current'), {"
+            },
+            {
+              "line_num": 401,
+              "code": "id: periodId,"
+            },
+            {
+              "line_num": 402,
+              "code": "status: 'open',"
+            },
+            {
+              "line_num": 403,
+              "code": "openedAt: now,"
+            },
+            {
+              "line_num": 404,
+              "code": "openedBy: staffName,"
+            },
+            {
+              "line_num": 405,
+              "code": "closedAt: null,"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 417,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'workPeriods', workPeriod.id), {",
+          "context": [
+            {
+              "line_num": 412,
+              "code": "const closeWorkPeriod = async (staffName, summary) => {"
+            },
+            {
+              "line_num": 413,
+              "code": "if (!workPeriod) return;"
+            },
+            {
+              "line_num": 414,
+              "code": "const now = new Date().toISOString();"
+            },
+            {
+              "line_num": 416,
+              "code": "// Archive the work period"
+            },
+            {
+              "line_num": 417,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'workPeriods', workPeriod.id), {"
+            },
+            {
+              "line_num": 418,
+              "code": "...workPeriod,"
+            },
+            {
+              "line_num": 419,
+              "code": "status: 'closed',"
+            },
+            {
+              "line_num": 420,
+              "code": "closedAt: now,"
+            },
+            {
+              "line_num": 421,
+              "code": "closedBy: staffName,"
+            },
+            {
+              "line_num": 422,
+              "code": "...summary"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 426,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'workPeriods', 'current'), {",
+          "context": [
+            {
+              "line_num": 421,
+              "code": "closedBy: staffName,"
+            },
+            {
+              "line_num": 422,
+              "code": "...summary"
+            },
+            {
+              "line_num": 423,
+              "code": "});"
+            },
+            {
+              "line_num": 425,
+              "code": "// Clear current"
+            },
+            {
+              "line_num": 426,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'workPeriods', 'current'), {"
+            },
+            {
+              "line_num": 427,
+              "code": "status: 'closed',"
+            },
+            {
+              "line_num": 428,
+              "code": "lastPeriodId: workPeriod.id,"
+            },
+            {
+              "line_num": 429,
+              "code": "closedAt: now"
+            },
+            {
+              "line_num": 430,
+              "code": "});"
+            },
+            {
+              "line_num": 431,
+              "code": "};"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 469,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', userId), shiftData);",
+          "context": [
+            {
+              "line_num": 464,
+              "code": "status: 'active',"
+            },
+            {
+              "line_num": 465,
+              "code": "ordersCount: 0,"
+            },
+            {
+              "line_num": 466,
+              "code": "totalSales: 0,"
+            },
+            {
+              "line_num": 467,
+              "code": "itemsSold: [],"
+            },
+            {
+              "line_num": 468,
+              "code": "};"
+            },
+            {
+              "line_num": 469,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', userId), shiftData);"
+            },
+            {
+              "line_num": 470,
+              "code": "return shiftData;"
+            },
+            {
+              "line_num": 471,
+              "code": "}, [userId, staffName, serviceCenter]);"
+            },
+            {
+              "line_num": 473,
+              "code": "// End shift on logout"
+            },
+            {
+              "line_num": 474,
+              "code": "const endShift = useCallback(async (summary = {}) => {"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 827,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', u.uid), shiftData);",
+          "context": [
+            {
+              "line_num": 822,
+              "code": "status: 'active',"
+            },
+            {
+              "line_num": 823,
+              "code": "ordersCount: 0,"
+            },
+            {
+              "line_num": 824,
+              "code": "totalSales: 0,"
+            },
+            {
+              "line_num": 825,
+              "code": "itemsSold: [],"
+            },
+            {
+              "line_num": 826,
+              "code": "};"
+            },
+            {
+              "line_num": 827,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', u.uid), shiftData);"
+            },
+            {
+              "line_num": 828,
+              "code": "}"
+            },
+            {
+              "line_num": 829,
+              "code": "} catch (shiftErr) {"
+            },
+            {
+              "line_num": 830,
+              "code": "console.error(\"Error starting shift:\", shiftErr);"
+            },
+            {
+              "line_num": 831,
+              "code": "}"
+            },
+            {
+              "line_num": 832,
+              "code": "}"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 494,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', userId), {",
+          "context": [
+            {
+              "line_num": 489,
+              "code": "}, [userId, currentShift]);"
+            },
+            {
+              "line_num": 491,
+              "code": "// Update shift metrics"
+            },
+            {
+              "line_num": 492,
+              "code": "const updateShiftMetrics = useCallback(async (orderTotal, items) => {"
+            },
+            {
+              "line_num": 493,
+              "code": "if (!userId || !currentShift) return;"
+            },
+            {
+              "line_num": 494,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', userId), {"
+            },
+            {
+              "line_num": 495,
+              "code": "ordersCount: increment(1),"
+            },
+            {
+              "line_num": 496,
+              "code": "totalSales: increment(orderTotal),"
+            },
+            {
+              "line_num": 497,
+              "code": "itemsSold: arrayUnion(...items.map(i => ({ name: i.name, qty: i.qty, price: i.price })))"
+            },
+            {
+              "line_num": 498,
+              "code": "});"
+            },
+            {
+              "line_num": 499,
+              "code": "}, [userId, currentShift]);"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 1656,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', currentUserId), {",
+          "context": [
+            {
+              "line_num": 1651,
+              "code": "const currentUserId = auth.currentUser?.uid;"
+            },
+            {
+              "line_num": 1652,
+              "code": "if (currentUserId) {"
+            },
+            {
+              "line_num": 1653,
+              "code": "try {"
+            },
+            {
+              "line_num": 1654,
+              "code": "const shiftDoc = await getDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', currentUserId));"
+            },
+            {
+              "line_num": 1655,
+              "code": "if (shiftDoc.exists()) {"
+            },
+            {
+              "line_num": 1656,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'staffShifts', currentUserId), {"
+            },
+            {
+              "line_num": 1657,
+              "code": "ordersCount: increment(1),"
+            },
+            {
+              "line_num": 1658,
+              "code": "totalSales: increment(total),"
+            },
+            {
+              "line_num": 1659,
+              "code": "itemsSold: arrayUnion(...cart.map(i => ({ name: i.name, qty: i.qty, price: i.price, time: new Date().toISOString() })))"
+            },
+            {
+              "line_num": 1660,
+              "code": "});"
+            },
+            {
+              "line_num": 1661,
+              "code": "}"
+            }
+          ]
+        }
+      ]
+    },
+    "payment_operations": {
+      "count": 0,
+      "operations": []
+    },
+    "other_operations": {
+      "count": 21,
+      "operations": [
+        {
+          "file": "src\\App.js",
+          "line": 319,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sales', tx.id), { ...tx, status: 'confirmed', synced: true, syncedAt: new Date().toISOString() });",
+          "context": [
+            {
+              "line_num": 314,
+              "code": "if (syncing || queue.length === 0) return;"
+            },
+            {
+              "line_num": 315,
+              "code": "setSyncing(true);"
+            },
+            {
+              "line_num": 317,
+              "code": "for (const tx of queue) {"
+            },
+            {
+              "line_num": 318,
+              "code": "try {"
+            },
+            {
+              "line_num": 319,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sales', tx.id), { ...tx, status: 'confirmed', synced: true, syncedAt: new Date().toISOString() });"
+            },
+            {
+              "line_num": 320,
+              "code": "setQueue(prev => prev.filter(t => t.id !== tx.id));"
+            },
+            {
+              "line_num": 321,
+              "code": "console.log(`Synced offline TX: ${tx.id}`);"
+            },
+            {
+              "line_num": 322,
+              "code": "} catch (e) {"
+            },
+            {
+              "line_num": 323,
+              "code": "console.error(`Failed to sync TX ${tx.id}:`, e);"
+            },
+            {
+              "line_num": 324,
+              "code": "break;"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 358,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'voids', voidRecord.id), { ...voidRecord, synced: true, syncedAt: new Date().toISOString() });",
+          "context": [
+            {
+              "line_num": 353,
+              "code": "if (syncingVoids || voidQueue.length === 0) return;"
+            },
+            {
+              "line_num": 354,
+              "code": "setSyncingVoids(true);"
+            },
+            {
+              "line_num": 356,
+              "code": "for (const voidRecord of voidQueue) {"
+            },
+            {
+              "line_num": 357,
+              "code": "try {"
+            },
+            {
+              "line_num": 358,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'voids', voidRecord.id), { ...voidRecord, synced: true, syncedAt: new Date().toISOString() });"
+            },
+            {
+              "line_num": 359,
+              "code": "setVoidQueue(prev => prev.filter(v => v.id !== voidRecord.id));"
+            },
+            {
+              "line_num": 360,
+              "code": "console.log(`Synced offline VOID: ${voidRecord.id}`);"
+            },
+            {
+              "line_num": 361,
+              "code": "} catch (e) {"
+            },
+            {
+              "line_num": 362,
+              "code": "console.error(`Failed to sync VOID ${voidRecord.id}:`, e);"
+            },
+            {
+              "line_num": 363,
+              "code": "break;"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 482,
+          "code": "await setDoc(",
+          "context": [
+            {
+              "line_num": 477,
+              "code": "const shiftDuration = currentShift.loginTime"
+            },
+            {
+              "line_num": 478,
+              "code": "? Math.round((new Date(now) - new Date(currentShift.loginTime)) / (1000 * 60))"
+            },
+            {
+              "line_num": 479,
+              "code": ": 0;"
+            },
+            {
+              "line_num": 481,
+              "code": "// Archive the shift"
+            },
+            {
+              "line_num": 482,
+              "code": "await setDoc("
+            },
+            {
+              "line_num": 483,
+              "code": "doc(db, 'artifacts', appId, 'public', 'data', 'shiftHistory', currentShift.shiftId),"
+            },
+            {
+              "line_num": 484,
+              "code": "{ ...currentShift, logoutTime: now, status: 'completed', shiftDuration, ...summary }"
+            },
+            {
+              "line_num": 485,
+              "code": ");"
+            },
+            {
+              "line_num": 487,
+              "code": "// Clear current shift"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 665,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), reqData);",
+          "context": [
+            {
+              "line_num": 660,
+              "code": "approvedAt: null,"
+            },
+            {
+              "line_num": 661,
+              "code": "issuedBy: null,"
+            },
+            {
+              "line_num": 662,
+              "code": "issuedAt: null,"
+            },
+            {
+              "line_num": 663,
+              "code": "};"
+            },
+            {
+              "line_num": 665,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), reqData);"
+            },
+            {
+              "line_num": 666,
+              "code": "return reqId;"
+            },
+            {
+              "line_num": 667,
+              "code": "};"
+            },
+            {
+              "line_num": 669,
+              "code": "const approveRequisition = async (reqId, approverName) => {"
+            },
+            {
+              "line_num": 670,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 746,
+          "code": "await setDoc(docRef, {",
+          "context": [
+            {
+              "line_num": 741,
+              "code": "itemsSold: increment(itemsCount),"
+            },
+            {
+              "line_num": 742,
+              "code": "lastUpdated: new Date().toISOString(),"
+            },
+            {
+              "line_num": 743,
+              "code": "});"
+            },
+            {
+              "line_num": 744,
+              "code": "} catch {"
+            },
+            {
+              "line_num": 745,
+              "code": "// Document doesn't exist, create it"
+            },
+            {
+              "line_num": 746,
+              "code": "await setDoc(docRef, {"
+            },
+            {
+              "line_num": 747,
+              "code": "staffId,"
+            },
+            {
+              "line_num": 748,
+              "code": "serviceCenter,"
+            },
+            {
+              "line_num": 749,
+              "code": "month: currentMonth,"
+            },
+            {
+              "line_num": 750,
+              "code": "totalSales: orderTotal,"
+            },
+            {
+              "line_num": 751,
+              "code": "ordersCount: 1,"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 850,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'users', u.uid), newUserData);",
+          "context": [
+            {
+              "line_num": 845,
+              "code": "email: u.email,"
+            },
+            {
+              "line_num": 846,
+              "code": "role: 'admin', // First user gets admin"
+            },
+            {
+              "line_num": 847,
+              "code": "department: null,"
+            },
+            {
+              "line_num": 848,
+              "code": "createdAt: new Date().toISOString()"
+            },
+            {
+              "line_num": 849,
+              "code": "};"
+            },
+            {
+              "line_num": 850,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'users', u.uid), newUserData);"
+            },
+            {
+              "line_num": 851,
+              "code": "setAppUser({ ...newUserData, id: u.uid, photo: u.photoURL });"
+            },
+            {
+              "line_num": 852,
+              "code": "setView('dashboard');"
+            },
+            {
+              "line_num": 853,
+              "code": "}"
+            },
+            {
+              "line_num": 854,
+              "code": "} catch (e) {"
+            },
+            {
+              "line_num": 855,
+              "code": "console.error(\"Error fetching user role:\", e);"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 1584,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'voids', voidId), { ...voidRecord, synced: true });",
+          "context": [
+            {
+              "line_num": 1579,
+              "code": "// STEP 2: Remove from cart immediately (UI feedback)"
+            },
+            {
+              "line_num": 1580,
+              "code": "setCart(cart.filter(i => i.id !== item.id));"
+            },
+            {
+              "line_num": 1582,
+              "code": "// STEP 3: Try Firestore write"
+            },
+            {
+              "line_num": 1583,
+              "code": "try {"
+            },
+            {
+              "line_num": 1584,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'voids', voidId), { ...voidRecord, synced: true });"
+            },
+            {
+              "line_num": 1585,
+              "code": "// STEP 4: Remove from queue only after successful sync"
+            },
+            {
+              "line_num": 1586,
+              "code": "dequeueVoid(voidId);"
+            },
+            {
+              "line_num": 1587,
+              "code": "} catch (e) {"
+            },
+            {
+              "line_num": 1588,
+              "code": "console.error(\"Void queued offline, will auto-sync:\", e);"
+            },
+            {
+              "line_num": 1589,
+              "code": "// Void remains in queue - useOfflineVoidQueue will auto-retry"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 1636,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sales', txId), { ...txPayload, status: 'confirmed', synced: true });",
+          "context": [
+            {
+              "line_num": 1631,
+              "code": "// STEP 1: Persist to local queue BEFORE anything else (survives crash)"
+            },
+            {
+              "line_num": 1632,
+              "code": "enqueue(txPayload);"
+            },
+            {
+              "line_num": 1634,
+              "code": "try {"
+            },
+            {
+              "line_num": 1635,
+              "code": "// STEP 2: Write to Firestore (idempotent - same txId = same doc)"
+            },
+            {
+              "line_num": 1636,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sales', txId), { ...txPayload, status: 'confirmed', synced: true });"
+            },
+            {
+              "line_num": 1638,
+              "code": "// STEP 3: Only clear cart AFTER Firestore write succeeds"
+            },
+            {
+              "line_num": 1639,
+              "code": "clearCart();"
+            },
+            {
+              "line_num": 1641,
+              "code": "// STEP 4: Secondary writes (stock, room charges, performance updates)"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 1678,
+          "code": "await setDoc(perfDocRef, {",
+          "context": [
+            {
+              "line_num": 1673,
+              "code": "itemsSold: increment(txPayload.itemsCount),"
+            },
+            {
+              "line_num": 1674,
+              "code": "lastUpdated: new Date().toISOString(),"
+            },
+            {
+              "line_num": 1675,
+              "code": "});"
+            },
+            {
+              "line_num": 1676,
+              "code": "} catch {"
+            },
+            {
+              "line_num": 1677,
+              "code": "// Document doesn't exist, create it"
+            },
+            {
+              "line_num": 1678,
+              "code": "await setDoc(perfDocRef, {"
+            },
+            {
+              "line_num": 1679,
+              "code": "staffId: currentUserId,"
+            },
+            {
+              "line_num": 1680,
+              "code": "staffName: staffName,"
+            },
+            {
+              "line_num": 1681,
+              "code": "serviceCenter: department?.id,"
+            },
+            {
+              "line_num": 1682,
+              "code": "month: currentMonth,"
+            },
+            {
+              "line_num": 1683,
+              "code": "totalSales: total,"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 3410,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'events', eventId), eventData);",
+          "context": [
+            {
+              "line_num": 3405,
+              "code": "createdBy: staffName || 'Admin',"
+            },
+            {
+              "line_num": 3406,
+              "code": "createdAt: new Date().toISOString()"
+            },
+            {
+              "line_num": 3407,
+              "code": "};"
+            },
+            {
+              "line_num": 3409,
+              "code": "try {"
+            },
+            {
+              "line_num": 3410,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'events', eventId), eventData);"
+            },
+            {
+              "line_num": 3411,
+              "code": "resetForm();"
+            },
+            {
+              "line_num": 3412,
+              "code": "alert('\u2713 Event created successfully!');"
+            },
+            {
+              "line_num": 3413,
+              "code": "} catch (e) {"
+            },
+            {
+              "line_num": 3414,
+              "code": "alert('Failed to save event: ' + e.message);"
+            },
+            {
+              "line_num": 3415,
+              "code": "}"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 4375,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), reqData);",
+          "context": [
+            {
+              "line_num": 4370,
+              "code": "createdAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 4371,
+              "code": "updatedAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 4372,
+              "code": "};"
+            },
+            {
+              "line_num": 4374,
+              "code": "try {"
+            },
+            {
+              "line_num": 4375,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), reqData);"
+            },
+            {
+              "line_num": 4376,
+              "code": "alert('\u2713 Requisition submitted');"
+            },
+            {
+              "line_num": 4377,
+              "code": "setShowNewReq(false);"
+            },
+            {
+              "line_num": 4378,
+              "code": "setReqItems([]);"
+            },
+            {
+              "line_num": 4379,
+              "code": "setNotes('');"
+            },
+            {
+              "line_num": 4380,
+              "code": "} catch (e) {"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 4675,
+          "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'salesTargets', targetId), {",
+          "context": [
+            {
+              "line_num": 4670,
+              "code": "// Set sales target"
+            },
+            {
+              "line_num": 4671,
+              "code": "const handleSetTarget = async () => {"
+            },
+            {
+              "line_num": 4672,
+              "code": "if (!targetStaff || !targetAmount) return;"
+            },
+            {
+              "line_num": 4673,
+              "code": "const targetId = `${targetStaff}_${selectedMonth}`;"
+            },
+            {
+              "line_num": 4674,
+              "code": "try {"
+            },
+            {
+              "line_num": 4675,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'salesTargets', targetId), {"
+            },
+            {
+              "line_num": 4676,
+              "code": "staffId: targetStaff,"
+            },
+            {
+              "line_num": 4677,
+              "code": "staffName: STAFF_SEEDS.find(s => s.email === targetStaff)?.name || targetStaff,"
+            },
+            {
+              "line_num": 4678,
+              "code": "month: selectedMonth,"
+            },
+            {
+              "line_num": 4679,
+              "code": "target: parseInt(targetAmount),"
+            },
+            {
+              "line_num": 4680,
+              "code": "setBy: staffName,"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 670,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {",
+          "context": [
+            {
+              "line_num": 665,
+              "code": "await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), reqData);"
+            },
+            {
+              "line_num": 666,
+              "code": "return reqId;"
+            },
+            {
+              "line_num": 667,
+              "code": "};"
+            },
+            {
+              "line_num": 669,
+              "code": "const approveRequisition = async (reqId, approverName) => {"
+            },
+            {
+              "line_num": 670,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {"
+            },
+            {
+              "line_num": 671,
+              "code": "status: 'approved',"
+            },
+            {
+              "line_num": 672,
+              "code": "approvedBy: approverName,"
+            },
+            {
+              "line_num": 673,
+              "code": "approvedAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 674,
+              "code": "updatedAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 675,
+              "code": "});"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 679,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {",
+          "context": [
+            {
+              "line_num": 674,
+              "code": "updatedAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 675,
+              "code": "});"
+            },
+            {
+              "line_num": 676,
+              "code": "};"
+            },
+            {
+              "line_num": 678,
+              "code": "const rejectRequisition = async (reqId, approverName, reason) => {"
+            },
+            {
+              "line_num": 679,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {"
+            },
+            {
+              "line_num": 680,
+              "code": "status: 'rejected',"
+            },
+            {
+              "line_num": 681,
+              "code": "rejectedBy: approverName,"
+            },
+            {
+              "line_num": 682,
+              "code": "rejectedAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 683,
+              "code": "rejectionReason: reason,"
+            },
+            {
+              "line_num": 684,
+              "code": "updatedAt: new Date().toISOString(),"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 689,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {",
+          "context": [
+            {
+              "line_num": 684,
+              "code": "updatedAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 685,
+              "code": "});"
+            },
+            {
+              "line_num": 686,
+              "code": "};"
+            },
+            {
+              "line_num": 688,
+              "code": "const fulfillRequisition = async (reqId, issuerName) => {"
+            },
+            {
+              "line_num": 689,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', reqId), {"
+            },
+            {
+              "line_num": 690,
+              "code": "status: 'fulfilled',"
+            },
+            {
+              "line_num": 691,
+              "code": "issuedBy: issuerName,"
+            },
+            {
+              "line_num": 692,
+              "code": "issuedAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 693,
+              "code": "updatedAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 694,
+              "code": "});"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 738,
+          "code": "await updateDoc(docRef, {",
+          "context": [
+            {
+              "line_num": 733,
+              "code": "if (!staffId) return;"
+            },
+            {
+              "line_num": 734,
+              "code": "const currentMonth = new Date().toISOString().slice(0, 7);"
+            },
+            {
+              "line_num": 735,
+              "code": "const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'staffPerformance', `${staffId}_${currentMonth}`);"
+            },
+            {
+              "line_num": 737,
+              "code": "try {"
+            },
+            {
+              "line_num": 738,
+              "code": "await updateDoc(docRef, {"
+            },
+            {
+              "line_num": 739,
+              "code": "totalSales: increment(orderTotal),"
+            },
+            {
+              "line_num": 740,
+              "code": "ordersCount: increment(1),"
+            },
+            {
+              "line_num": 741,
+              "code": "itemsSold: increment(itemsCount),"
+            },
+            {
+              "line_num": 742,
+              "code": "lastUpdated: new Date().toISOString(),"
+            },
+            {
+              "line_num": 743,
+              "code": "});"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 1670,
+          "code": "await updateDoc(perfDocRef, {",
+          "context": [
+            {
+              "line_num": 1666,
+              "code": "// STEP 4c: Update monthly performance"
+            },
+            {
+              "line_num": 1667,
+              "code": "const currentMonth = new Date().toISOString().slice(0, 7);"
+            },
+            {
+              "line_num": 1668,
+              "code": "const perfDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'staffPerformance', `${currentUserId}_${currentMonth}`);"
+            },
+            {
+              "line_num": 1669,
+              "code": "try {"
+            },
+            {
+              "line_num": 1670,
+              "code": "await updateDoc(perfDocRef, {"
+            },
+            {
+              "line_num": 1671,
+              "code": "totalSales: increment(total),"
+            },
+            {
+              "line_num": 1672,
+              "code": "ordersCount: increment(1),"
+            },
+            {
+              "line_num": 1673,
+              "code": "itemsSold: increment(txPayload.itemsCount),"
+            },
+            {
+              "line_num": 1674,
+              "code": "lastUpdated: new Date().toISOString(),"
+            },
+            {
+              "line_num": 1675,
+              "code": "});"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 3438,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'events', selectedEvent.id), {",
+          "context": [
+            {
+              "line_num": 3433,
+              "code": "};"
+            },
+            {
+              "line_num": 3435,
+              "code": "const updatedPayments = [...(selectedEvent.payments || []), payment];"
+            },
+            {
+              "line_num": 3437,
+              "code": "try {"
+            },
+            {
+              "line_num": 3438,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'events', selectedEvent.id), {"
+            },
+            {
+              "line_num": 3439,
+              "code": "payments: updatedPayments"
+            },
+            {
+              "line_num": 3440,
+              "code": "});"
+            },
+            {
+              "line_num": 3441,
+              "code": "setSelectedEvent({ ...selectedEvent, payments: updatedPayments });"
+            },
+            {
+              "line_num": 3442,
+              "code": "resetPaymentForm();"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 4388,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', req.id), {",
+          "context": [
+            {
+              "line_num": 4383,
+              "code": "};"
+            },
+            {
+              "line_num": 4385,
+              "code": "// Approve requisition"
+            },
+            {
+              "line_num": 4386,
+              "code": "const handleApprove = async (req) => {"
+            },
+            {
+              "line_num": 4387,
+              "code": "try {"
+            },
+            {
+              "line_num": 4388,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', req.id), {"
+            },
+            {
+              "line_num": 4389,
+              "code": "status: 'approved',"
+            },
+            {
+              "line_num": 4390,
+              "code": "approvedBy: staffName,"
+            },
+            {
+              "line_num": 4391,
+              "code": "approvedAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 4392,
+              "code": "updatedAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 4393,
+              "code": "});"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 4405,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', req.id), {",
+          "context": [
+            {
+              "line_num": 4400,
+              "code": "// Reject requisition"
+            },
+            {
+              "line_num": 4401,
+              "code": "const handleReject = async (req) => {"
+            },
+            {
+              "line_num": 4402,
+              "code": "const reason = window.prompt('Rejection reason:');"
+            },
+            {
+              "line_num": 4403,
+              "code": "if (!reason) return;"
+            },
+            {
+              "line_num": 4404,
+              "code": "try {"
+            },
+            {
+              "line_num": 4405,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', req.id), {"
+            },
+            {
+              "line_num": 4406,
+              "code": "status: 'rejected',"
+            },
+            {
+              "line_num": 4407,
+              "code": "rejectedBy: staffName,"
+            },
+            {
+              "line_num": 4408,
+              "code": "rejectedAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 4409,
+              "code": "rejectionReason: reason,"
+            },
+            {
+              "line_num": 4410,
+              "code": "updatedAt: new Date().toISOString(),"
+            }
+          ]
+        },
+        {
+          "file": "src\\App.js",
+          "line": 4463,
+          "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', req.id), {",
+          "context": [
+            {
+              "line_num": 4458,
+              "code": "date: new Date().toISOString(),"
+            },
+            {
+              "line_num": 4459,
+              "code": "});"
+            },
+            {
+              "line_num": 4460,
+              "code": "}"
+            },
+            {
+              "line_num": 4462,
+              "code": "// Update requisition status"
+            },
+            {
+              "line_num": 4463,
+              "code": "await updateDoc(doc(db, 'artifacts', appId, 'public', 'data', 'requisitions', req.id), {"
+            },
+            {
+              "line_num": 4464,
+              "code": "status: 'fulfilled',"
+            },
+            {
+              "line_num": 4465,
+              "code": "issuedBy: staffName,"
+            },
+            {
+              "line_num": 4466,
+              "code": "issuedAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 4467,
+              "code": "updatedAt: new Date().toISOString(),"
+            },
+            {
+              "line_num": 4468,
+              "code": "});"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

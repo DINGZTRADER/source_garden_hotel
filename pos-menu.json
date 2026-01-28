@@ -1,0 +1,161 @@
+{
+  "categories": [
+    {
+      "category_name": "Soups",
+      "items": [
+        { "name": "Clear Vegetable Soup", "price": 10000, "category": "Soups" },
+        { "name": "Carrots Soup", "price": 10000, "category": "Soups" },
+        { "name": "Tomato Soup", "price": 10000, "category": "Soups" },
+        { "name": "Carrot & Ginger Soup", "price": 15000, "category": "Soups" },
+        { "name": "Mushroom Soup", "price": 20000, "category": "Soups" },
+        { "name": "Spaghetti & Chicken Soup", "price": 20000, "category": "Soups" }
+      ]
+    },
+    {
+      "category_name": "Starters",
+      "items": [
+        { "name": "Chicken Wings", "price": 30000, "category": "Starters" },
+        { "name": "Chicken Nuggets", "price": 20000, "category": "Starters" },
+        { "name": "Chicken Pakoda", "price": 20000, "category": "Starters" },
+        { "name": "Onion Rings", "price": 10000, "category": "Starters" },
+        { "name": "Mozarella Bites", "price": 20000, "category": "Starters" }
+      ]
+    },
+    {
+      "category_name": "Salads",
+      "items": [
+        { "name": "Chefs Caesar Salad", "price": 25000, "category": "Salads" },
+        { "name": "Ovacado Sunrise", "price": 25000, "category": "Salads" },
+        { "name": "Chicken Salads", "price": 25000, "category": "Salads" },
+        { "name": "Sweet Chicken Coleslaw", "price": 25000, "category": "Salads" },
+        { "name": "American Eggs Salad", "price": 20000, "category": "Salads" }
+      ]
+    },
+    {
+      "category_name": "Main Dishes",
+      "items": [
+        { "name": "Nile Special Fish", "price": 40000, "category": "Main Dishes" },
+        { "name": "Premium Whole Fish", "price": 35000, "category": "Main Dishes" },
+        { "name": "Special Grilled Whole Tilapia", "price": 35000, "category": "Main Dishes" },
+        { "name": "Fresh Fish Stew", "price": 35000, "category": "Main Dishes" },
+        { "name": "Fish Fingers", "price": 25000, "category": "Main Dishes" },
+        { "name": "Deep Fried Fish Stew", "price": 35000, "category": "Main Dishes" },
+        { "name": "Fish English Fillet", "price": 25000, "category": "Main Dishes" },
+        { "name": "Low Fat Whole Fish", "price": 35000, "category": "Main Dishes" },
+        { "name": "Liver Princess", "price": 25000, "category": "Main Dishes" },
+        { "name": "Supreme of Chicken", "price": 30000, "category": "Main Dishes" },
+        { "name": "A Quarter Chicken", "price": 25000, "category": "Main Dishes" },
+        { "name": "Pan-Fried Beef", "price": 25000, "category": "Main Dishes" },
+        { "name": "Pan-Fried Goat", "price": 30000, "category": "Main Dishes" }
+      ]
+    },
+    {
+      "category_name": "Burgers and Sandwiches",
+      "items": [
+        { "name": "Chicken Burger", "price": 20000, "category": "Burgers and Sandwiches" },
+        { "name": "Beef Burger", "price": 20000, "category": "Burgers and Sandwiches" },
+        { "name": "Vegetable Burger", "price": 20000, "category": "Burgers and Sandwiches" },
+        { "name": "Chicken Sandwich", "price": 20000, "category": "Burgers and Sandwiches" },
+        { "name": "Beef Sandwich", "price": 20000, "category": "Burgers and Sandwiches" },
+        { "name": "Egg Sandwich", "price": 20000, "category": "Burgers and Sandwiches" },
+        { "name": "Sausage Sandwich", "price": 20000, "category": "Burgers and Sandwiches" },
+        { "name": "Vegetable Sandwich", "price": 15000, "category": "Burgers and Sandwiches" },
+        { "name": "Cheese Sandwich", "price": 15000, "category": "Burgers and Sandwiches" }
+      ]
+    },
+    {
+      "category_name": "Steaks and Grills",
+      "items": [
+        { "name": "Beef Strogonoff", "price": 25000, "category": "Steaks and Grills" },
+        { "name": "Beef Fillet", "price": 25000, "category": "Steaks and Grills" },
+        { "name": "Source Garden Mixed Grill", "price": 50000, "category": "Steaks and Grills" }
+      ]
+    },
+    {
+      "category_name": "Pizzas",
+      "items": [
+        { "name": "Meat Magnifico", "price": 25000, "category": "Pizzas" },
+        { "name": "Margherita", "price": 25000, "category": "Pizzas" },
+        { "name": "Hawaii", "price": 25000, "category": "Pizzas" },
+        { "name": "Farmer Pizza", "price": 25000, "category": "Pizzas" },
+        { "name": "Vegetable Deluxe", "price": 25000, "category": "Pizzas" }
+      ]
+    },
+    {
+      "category_name": "Pastas",
+      "items": [
+        { "name": "Spaghetti Bolognaise", "price": 25000, "category": "Pastas" },
+        { "name": "Spaghetti Napolitan", "price": 20000, "category": "Pastas" },
+        { "name": "Spaghetti Fungi", "price": 20000, "category": "Pastas" }
+      ]
+    },
+    {
+      "category_name": "Curries",
+      "items": [
+        { "name": "Chicken Curry", "price": 25000, "category": "Curries" },
+        { "name": "Chicken Biryani", "price": 30000, "category": "Curries" },
+        { "name": "Mixed Vegetable Curry", "price": 20000, "category": "Curries" },
+        { "name": "Vegetable Biryani", "price": 20000, "category": "Curries" },
+        { "name": "Chicken Tikka Masala", "price": 25000, "category": "Curries" }
+      ]
+    },
+    {
+      "category_name": "African Dishes",
+      "items": [
+        { "name": "Goat Katogo", "price": 20000, "category": "African Dishes" },
+        { "name": "Beef Katogo", "price": 20000, "category": "African Dishes" },
+        { "name": "Beef Stew", "price": 25000, "category": "African Dishes" },
+        { "name": "African Stews", "price": 25000, "category": "African Dishes" },
+        { "name": "Plain Rice", "price": 10000, "category": "African Dishes" },
+        { "name": "Mashed Potatoes", "price": 10000, "category": "African Dishes" },
+        { "name": "Ugali or Posho", "price": 10000, "category": "African Dishes" },
+        { "name": "Boiled Potatoes", "price": 10000, "category": "African Dishes" },
+        { "name": "Irish Jackets", "price": 10000, "category": "African Dishes" },
+        { "name": "Matooke Jackets", "price": 10000, "category": "African Dishes" }
+      ]
+    },
+    {
+      "category_name": "Buffet",
+      "items": [
+        { "name": "African Buffet", "price": 40000, "category": "Buffet" },
+        { "name": "Special African Choma", "price": 55000, "category": "Buffet" },
+        { "name": "Indian Buffet", "price": 45000, "category": "Buffet" },
+        { "name": "Continental", "price": 50000, "category": "Buffet" }
+      ]
+    },
+    {
+      "category_name": "Desserts",
+      "items": [
+        { "name": "Fruit Platter", "price": 15000, "category": "Desserts" }
+      ]
+    },
+    {
+      "category_name": "Fresh Juices",
+      "items": [
+        { "name": "Passion Fruit", "price": 10000, "category": "Fresh Juices" },
+        { "name": "Watermelon", "price": 10000, "category": "Fresh Juices" },
+        { "name": "Pineapple", "price": 10000, "category": "Fresh Juices" },
+        { "name": "Cocktail Juice", "price": 15000, "category": "Fresh Juices" }
+      ]
+    }
+  ],
+  "metadata": {
+    "total_items": 83,
+    "currency": "UGX",
+    "verification": {
+      "Soups": { "required": 6, "actual": 6, "status": "✓" },
+      "Starters": { "required": 5, "actual": 5, "status": "✓" },
+      "Salads": { "required": 5, "actual": 5, "status": "✓" },
+      "Main Dishes": { "required": 13, "actual": 13, "status": "✓" },
+      "Burgers and Sandwiches": { "required": 9, "actual": 9, "status": "✓" },
+      "Steaks and Grills": { "required": 3, "actual": 3, "status": "✓" },
+      "Pizzas": { "required": 5, "actual": 5, "status": "✓" },
+      "Pastas": { "required": 3, "actual": 3, "status": "✓" },
+      "Curries": { "required": 5, "actual": 5, "status": "✓" },
+      "African Dishes": { "required": 10, "actual": 10, "status": "✓" },
+      "Buffet": { "required": 4, "actual": 4, "status": "✓" },
+      "Desserts": { "required": 1, "actual": 1, "status": "✓" },
+      "Fresh Juices": { "required": 4, "actual": 4, "status": "✓" }
+    }
+  }
+}
