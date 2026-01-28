@@ -1588,7 +1588,7 @@ const POSSystem = ({ menu, department, rooms, staffName, workPeriodOpen, workPer
   // Legacy Cart (Local Storage)
   const persistentCart = usePersistentCart(department?.id);
   // Folio Cart (Firestore)
-  const folioCart = useFolioCart(db, appId, activeFolio?.id, auth.currentUser?.uid, staffName, department);
+  const folioCart = useFolioCart(db, appId, activeFolio?.id || activeFolio?.folioId, auth.currentUser?.uid, staffName, department);
 
   // Active Interface
   const cart = isFolioMode ? folioCart.cart : persistentCart.cart;
@@ -1678,7 +1678,7 @@ const POSSystem = ({ menu, department, rooms, staffName, workPeriodOpen, workPer
       // FOLIO MODE: Pay against existing server record
       try {
         await addPaymentToFolio(db, appId, {
-          folioId: activeFolio.id,
+          folioId: activeFolio.id || activeFolio.folioId,
           amount: total,
           method,
           staffId: auth.currentUser?.uid,

@@ -756,7 +756,7 @@ export async function createOpenBarFolio(db, appId, {
             newState: { folioId, status: 'OPEN', table: tableOrLabel }
         });
 
-        return folioData;
+        return { ...folioData, id: folioId };
 
     } catch (error) {
         console.error('[FolioService] Error creating Open Bar Folio:', error);
