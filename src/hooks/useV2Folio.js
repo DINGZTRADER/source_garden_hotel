@@ -210,13 +210,15 @@ export function useFolioDetails(db, appId, folioId) {
         // 2. Listen to Line Items
         const itemsQuery = query(
             collection(db, 'artifacts', appId, 'public', 'data', 'folio_line_items'),
-            where('folioId', '==', folioId),
-            orderBy('createdAt', 'asc')
+            where('folioId', '==', folioId)
+            // orderBy('createdAt', 'asc') // Removing to avoid index requirements for now
         );
 
         const itemsUnsub = onSnapshot(itemsQuery,
             (snapshot) => {
                 const items = snapshot.docs.map(d => ({ ...d.data(), id: d.id }));
+                // Client-side sort
+                items.sort((a, b) => (a.createdAt || '').localeCompare(b.createdAt || ''));
                 setLineItems(items);
                 setLoading(false);
             },
